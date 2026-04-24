@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pau Balsach — Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #181818;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #f0ede8;
+    --muted: #888;
+    --accent: #7fff6e;
+    --accent2: #5de4ff;
+    --accent3: #ff6b6b;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* LANG SWITCHER */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px;
+  }
+
+  .lang-btn {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 9px;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .lang-btn:hover { color: var(--text); }
+
+  .lang-btn.active {
+    background: rgba(255,255,255,0.08);
+    color: var(--accent);
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(127,255,110,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127,255,110,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(127,255,110,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(93,228,255,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title .line-dim { color: rgba(240,237,232,0.25); }
+
+  .hero-sub {
+    max-width: 560px;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(240,237,232,0.6);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: #0a0a0a;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 400;
+    border: 1px solid var(--border-hover);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    animation: scrollLine 2s 1s infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* STATS */
+  .hero-stats {
+    position: absolute;
+    right: 3rem;
+    bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .stat-item {
+    text-align: right;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-num {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    gap: 1.5px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    transition: border-color 0.3s, background 0.3s;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--card-accent, rgba(127,255,110,0.03)) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .project-card:hover { border-color: var(--border-hover); background: var(--bg3); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-card.accent-blue { --card-accent: rgba(93,228,255,0.05); }
+  .project-card.accent-coral { --card-accent: rgba(255,107,107,0.05); }
+  .project-card.accent-purple { --card-accent: rgba(127,110,255,0.05); }
+
+  .project-main { min-width: 0; position: relative; z-index: 2; }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .project-icon.green { background: rgba(127,255,110,0.12); }
+  .project-icon.blue { background: rgba(93,228,255,0.12); }
+  .project-icon.red { background: rgba(255,107,107,0.12); }
+  .project-icon.purple { background: rgba(127,110,255,0.12); }
+
+  .project-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .project-short {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    color: rgba(240,237,232,0.65);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.05);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-badge {
+    font-size: 0.72rem;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  .tech-badge.java { background: rgba(240,131,0,0.15); color: #f08300; }
+  .tech-badge.dart { background: rgba(93,228,255,0.12); color: #5de4ff; }
+  .tech-badge.html { background: rgba(255,107,107,0.12); color: #ff6b6b; }
+  .tech-badge.supabase { background: rgba(62,207,142,0.12); color: #3ecf8e; }
+  .tech-badge.postgres { background: rgba(51,103,145,0.2); color: #69a8d4; }
+  .tech-badge.docker { background: rgba(24,188,210,0.12); color: #18bcd2; }
+  .tech-badge.flutter { background: rgba(93,228,255,0.1); color: #64b5f6; }
+  .tech-badge.security { background: rgba(255,107,107,0.1); color: #ff6b6b; }
+  .tech-badge.swagger { background: rgba(127,255,110,0.1); color: #7fff6e; }
+
+  .project-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .project-number {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .project-repo-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .repo-link:hover { color: var(--text); border-color: var(--border-hover); }
+
+  .repo-link svg { width: 13px; height: 13px; }
+
+  /* ARCHITECTURE BADGE */
+  .arch-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    background: rgba(127,255,110,0.04);
+    border: 1px solid rgba(127,255,110,0.12);
+    border-radius: 4px;
+    width: fit-content;
+  }
+
+  .arch-banner-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .arch-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+    max-width: 100%;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-bio p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(240,237,232,0.7);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-bio p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .about-details { display: flex; flex-direction: column; gap: 2rem; }
+
+  .detail-group {}
+
+  .detail-group-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+  }
+
+  .skill-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .skill-icon-item:hover {
+    border-color: var(--border-hover);
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-2px);
+  }
+
+  .skill-icon-item svg { width: 28px; height: 28px; flex-shrink: 0; }
+
+  .skill-icon-name {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(240,237,232,0.6);
+    letter-spacing: 0.02em;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* VIDEO DEMO */
+  .project-video-wrap {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    position: relative;
+  }
+
+  .project-video-wrap video {
+    width: 100%;
+    display: block;
+    max-height: 340px;
+    object-fit: cover;
+    border-radius: 7px;
+  }
+
+  .video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    max-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.015),
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  }
+
+  .video-placeholder-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--border-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+  }
+
+  .video-placeholder-icon svg { width: 22px; height: 22px; }
+
+  .video-placeholder-text {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .video-placeholder-sub {
+    font-size: 0.68rem;
+    color: rgba(136,136,136,0.5);
+    font-family: var(--font-body);
+    font-style: italic;
+  }
+
+  .lang-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem; }
+
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+  }
+
+  .lang-name { color: rgba(240,237,232,0.7); }
+  .lang-level {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1px 1fr;
+    gap: 0 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .timeline-date {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-top: 2px;
+    text-align: right;
+    letter-spacing: 0.02em;
+  }
+
+  .timeline-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .timeline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .timeline-connector {
+    flex: 1;
+    width: 1px;
+    background: var(--border);
+    margin-top: 6px;
+  }
+
+  .timeline-content { padding-bottom: 1rem; }
+
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.15rem;
+  }
+
+  .timeline-company {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: rgba(240,237,232,0.6);
+    line-height: 1.7;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .timeline-tag {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .contact-heading span { color: var(--accent); }
+
+  .contact-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(240,237,232,0.55);
+    line-height: 1.75;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--bg);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-item:hover { border-color: var(--border-hover); background: var(--bg3); }
+
+  .contact-item-left { display: flex; align-items: center; gap: 1rem; }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .contact-icon.email { background: rgba(93,228,255,0.1); }
+  .contact-icon.github { background: rgba(255,255,255,0.06); }
+  .contact-icon.phone { background: rgba(127,255,110,0.1); }
+
+  .contact-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .contact-value { font-size: 0.95rem; font-weight: 400; color: var(--text); margin-top: 1px; }
+
+  .contact-arrow { color: var(--muted); font-size: 1rem; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 3rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    border-top: 1px solid var(--border);
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .hero-stats { display: none; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-links { flex-direction: row; align-items: center; }
+    .project-number { font-size: 2.5rem; }
+    .timeline-item { grid-template-columns: 90px 1px 1fr; gap: 0 1rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-title { font-size: 3rem; }
+    .hero-ctas { flex-direction: column; }
+    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Pau<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('ca')">CA</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <p class="hero-eyebrow">Software Developer — Banyoles, Girona</p>
+
+  <h1 class="hero-title" data-i18n-html="hero.title">
+    Crafting<br>
+    <span class="line-dim">backend</span><br>
+    systems
+  </h1>
+
+  <p class="hero-sub" data-i18n="hero.sub">
+    Estudiant de DAM especialitzat en arquitectures distribuïdes, aplicacions mòbils i sistemes segurs. Apassionat de transformar idees en productes reals.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">
+      <span data-i18n="hero.cta">Veure projectes</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="https://github.com/Pau-Balsach" target="_blank" rel="noopener" class="btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">3+</div>
+      <div class="stat-label" data-i18n="stats.projects">Full projects</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">8+</div>
+      <div class="stat-label" data-i18n="stats.repos">Repos públics</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">18</div>
+      <div class="stat-label" data-i18n="stats.age">Anys</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title" data-i18n="sections.projects">Projectes</h2>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- AppTaxis -->
+    <div class="project-card reveal" style="margin-bottom: 1.5rem;">
+      <div class="project-main">
+        <div class="project-header">
+          <div class="project-icon green">🚕</div>
+          <h3 class="project-name">AppTaxis</h3>
+        </div>
+        <p class="project-short" data-i18n="apptaxis.short">Plataforma full-stack de gestió de flotes amb arquitectura distribuïda (desktop, mobile i API).</p>
+        <p class="project-desc" data-i18n="apptaxis.desc">
+          Sistema complet per a la gestió de flotes de taxi que centralitza l'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l'assignació de serveis i el control d'activitat.
+        </p>
+        <div class="project-features">
+          <span class="feature-tag" data-i18n="apptaxis.f1">Calendari interactiu</span>
+          <span class="feature-tag" data-i18n="apptaxis.f2">Gestió de conductors</span>
+          <span class="feature-tag" data-i18n="apptaxis.f3">API documentada</span>
+          <span class="feature-tag" data-i18n="apptaxis.f4">Arquitectura client-servidor</span>
+          <span class="feature-tag" data-i18n="apptaxis.f5">Multi-plataforma</span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-badge java">Java</span>
+          <span class="tech-badge dart">Dart / Flutter</span>
+          <span class="tech-badge supabase">Supabase</span>
+          <span class="tech-badge postgres">PostgreSQL</span>
+          <span class="tech-badge docker">Docker</span>
+          <span class="tech-badge swagger">Swagger</span>
+        </div>
+        <div class="arch-banner">
+          <div class="arch-dot"></div>
+          <span class="arch-banner-label" data-i18n="apptaxis.arch">Arquitectura distribuïda — Desktop · Mobile · API · Auth</span>
+        </div>
+        <div class="project-video-wrap">
+          <video src="videos/apptaxis-demo.mp4" controls muted loop playsinline></video> 
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-number">01</div>
+        <div class="project-repo-links">
+          <a href="https://github.com/Pau-Balsach/AppTaxis-code" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Desktop (Java)
+          </a>
+          <a href="https://github.com/Pau-Balsach/AppTaxis-mobile" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Mobile (Flutter)
+          </a>
+          <a href="https://github.com/Pau-Balsach/AppTaxis-api" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            API (Java)
+          </a>
+          <a href="https://github.com/Pau-Balsach/AppTaxis-auth" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Auth (HTML)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GestorContraseñas (posición 02) -->
+    <div class="project-card accent-purple reveal" style="margin-bottom: 1.5rem;">
+      <div class="project-main">
+        <div class="project-header">
+          <div class="project-icon purple">🔐</div>
+          <h3 class="project-name">GestorContraseñas</h3>
+        </div>
+        <p class="project-short" data-i18n="gestor.short">Gestor de contrasenyes amb xifratge AES-256 i arquitectura zero-knowledge.</p>
+        <p class="project-desc" data-i18n="gestor.desc">
+          Aplicació d'escriptori enfocada en la gestió segura de credencials, implementant xifratge avançat i control d'accés basat en autenticació forta. La contrasenya mestra mai s'emmagatzema: es deriva amb PBKDF2 i s'usa localment.
+        </p>
+        <div class="project-features">
+          <span class="feature-tag">Xifratge AES-256</span>
+          <span class="feature-tag">PBKDF2 Key Derivation</span>
+          <span class="feature-tag">Row Level Security</span>
+          <span class="feature-tag" data-i18n="gestor.f1">Recuperació per email</span>
+          <span class="feature-tag" data-i18n="gestor.f2">Organització per categories</span>
+          <span class="feature-tag">API Riot Games</span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-badge java">Java</span>
+          <span class="tech-badge security">AES-256</span>
+          <span class="tech-badge supabase">Supabase Auth</span>
+          <span class="tech-badge html">HTML Auth</span>
+        </div>
+        <div class="arch-banner" style="border-color: rgba(127,110,255,0.2); background: rgba(127,110,255,0.04);">
+          <div class="arch-dot" style="background: #7f6eff;"></div>
+          <span class="arch-banner-label" style="color: #7f6eff;">Zero-knowledge architecture — Master key never stored</span>
+        </div>
+        <div class="project-video-wrap">
+               <video src="videos/gestor-demo.mp4" controls muted loop playsinline></video> 
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-number">02</div>
+        <div class="project-repo-links">
+          <a href="https://github.com/Pau-Balsach/gestor-contrasenas-code" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            App (Java)
+          </a>
+          <a href="https://github.com/Pau-Balsach/gestor-contrasenyas-web" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.885.12-3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Auth Web (HTML)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TrackLectura (posición 03) -->
+    <div class="project-card accent-blue reveal">
+      <div class="project-main">
+        <div class="project-header">
+          <div class="project-icon blue">📖</div>
+          <h3 class="project-name">TrackLectura</h3>
+        </div>
+        <p class="project-short" data-i18n="track.short">Eina d'anàlisi d'hàbits de lectura amb sincronització cloud i suport offline.</p>
+        <p class="project-desc" data-i18n="track.desc">
+          Aplicació d'escriptori per al seguiment i anàlisi d'hàbits de lectura. Permet registrar sessions, mesurar rendiment i visualitzar estadístiques detallades per llibre, amb sincronització automàtica al núvol i mode offline complet.
+        </p>
+        <div class="project-features">
+          <span class="feature-tag" data-i18n="track.f1">Estadístiques per llibre</span>
+          <span class="feature-tag" data-i18n="track.f2">Mode offline</span>
+          <span class="feature-tag" data-i18n="track.f3">Exportació CSV/imatge</span>
+          <span class="feature-tag" data-i18n="track.f4">Tema clar / fosc</span>
+          <span class="feature-tag" data-i18n="track.f5">Portades automàtiques</span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-badge java">Java</span>
+          <span class="tech-badge supabase">Supabase</span>
+          <span class="tech-badge html">HTML Auth</span>
+        </div>
+        <div class="arch-banner" style="border-color: rgba(93,228,255,0.2); background: rgba(93,228,255,0.04);">
+          <div class="arch-dot" style="background: #5de4ff;"></div>
+          <span class="arch-banner-label" style="color: #5de4ff;" data-i18n="track.arch">Modo dual: Acceso como invitado (offline) o sincronización Cloud con cuenta personal.</span>
+        </div>
+        <div class="project-video-wrap">
+               <video src="videos/tracklectura-demo.mp4" controls muted loop playsinline></video> 
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-number">03</div>
+        <div class="project-repo-links">
+          <a href="https://github.com/Pau-Balsach/tracklectura-code" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            App (Java)
+          </a>
+          <a href="https://github.com/Pau-Balsach/tracklectura-auth" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Auth (HTML)
+          </a>
+        </div>
+      </div>
+    </div>
+      <div class="project-links">
+        <div class="project-number">03</div>
+        <div class="project-repo-links">
+          <a href="https://github.com/Pau-Balsach/tracklectura-code" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            App (Java)
+          </a>
+          <a href="https://github.com/Pau-Balsach/tracklectura-auth" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Auth (HTML)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title" data-i18n="sections.about">Sobre mí</h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-bio reveal">
+      <p data-i18n="about.p1">Soc en <strong>Pau Balsach</strong>, estudiant de Cicle Formatiu de Grau Superior en Desenvolupament d'Aplicacions Multiplataforma (DAM) a l'Institut Pla de l'Estany, Banyoles.</p>
+      <p data-i18n="about.p2">M'apassiona construir sistemes complets, des del <strong>backend i APIs</strong> fins a interfícies d'escriptori i aplicacions mòbils. Gaudeixo especialment dels reptes d'arquitectura distribuïda i de la implementació de mecanismes de seguretat robustos.</p>
+      <p data-i18n="about.p3">Fora del codi, he participat en un voluntariat per reparar ordinadors per a escoles amb pocs recursos de l'Àfrica, i he dedicat 4 anys a activitats extraescolars de <strong>programació i robòtica</strong> amb Python.</p>
+    </div>
+
+    <div class="about-details reveal">
+      <div class="detail-group">
+        <div class="detail-group-title" data-i18n="about.skills">Habilitats tècniques</div>
+        <div class="skill-grid">
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#f08300" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.796 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969zm-2.988-13.665s-5.348 3.959 2.823 4.805c10.567 1.091 18.91 1.18 33.354-1.6 0 0 1.993 2.025 5.132 3.131-29.542 8.64-62.446.68-41.309-6.336z"/><path fill="#f08300" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.792 15.635-29.58 0 0-42.731 10.67-22.324 34.187z"/><path fill="#f08300" d="M102.123 108.229s3.529 2.91-3.888 5.159c-14.102 4.272-58.706 5.56-71.094.171-4.451-1.938 3.899-4.625 6.526-5.192 2.739-.593 4.303-.485 4.303-.485-4.953-3.487-32.013 6.85-13.743 9.815 49.821 8.076 90.817-3.637 77.896-9.468zM49.912 70.294s-22.686 5.389-8.033 7.348c6.188.828 18.518.638 30.011-.326 9.39-.789 18.813-2.474 18.813-2.474s-3.308 1.419-5.704 3.053c-23.042 6.061-67.544 3.238-54.731-2.958 10.832-5.239 19.644-4.643 19.644-4.643zm40.697 22.747c23.421-12.167 12.591-23.86 5.032-22.285-1.848.385-2.677.72-2.677.72s.688-1.079 2-1.543c14.953-5.255 26.451 15.503-4.823 23.725 0-.001.359-.327.468-.617z"/><path fill="#f08300" d="M76.491 1.587S89.459 14.563 64.188 34.51c-20.266 16.006-4.621 25.13-.007 35.559-11.831-10.673-20.509-20.07-14.688-28.815C58.041 28.42 81.722 22.195 76.491 1.587z"/><path fill="#f08300" d="M52.214 126.021c22.476 1.437 57-.8 57.817-11.436 0 0-1.571 4.032-18.577 7.231-19.186 3.612-42.854 3.191-56.887.874 0 .001 2.875 2.381 17.647 3.331z"/></svg>
+            <span class="skill-icon-name">Java</span>
+          </div>
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#54c5f8" d="M12.3 64.2L76.3 0h39.4L32.1 83.6z"/><path fill="#01579b" d="M76.3 128h39.4L81.6 93.9l34.1-34.8H76.3L42.2 93.5z"/><path fill="#29b6f6" d="M42.2 93.5l20 20.3 20-19.9-20-20.3z"/></svg>
+            <span class="skill-icon-name">Dart / Flutter</span>
+          </div>
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><ellipse cx="12" cy="6" rx="9" ry="3" stroke="#69a8d4" stroke-width="1.5"/><path d="M3 6v4c0 1.657 4.03 3 9 3s9-1.343 9-3V6" stroke="#69a8d4" stroke-width="1.5"/><path d="M3 10v4c0 1.657 4.03 3 9 3s9-1.343 9-3v-4" stroke="#69a8d4" stroke-width="1.5"/><path d="M3 14v4c0 1.657 4.03 3 9 3s9-1.343 9-3v-4" stroke="#69a8d4" stroke-width="1.5"/></svg>
+            <span class="skill-icon-name">SQL / DBs</span>
+          </div>
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#3776ab" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.876-1.008zm-13.354 7.569c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"/><path fill="#ffe052" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.548v23.515c0 6.693 5.818 10.629 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"/></svg>
+            <span class="skill-icon-name">Python</span>
+          </div>
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#e44d26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"/><path fill="#f16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"/><path fill="#ebebeb" d="M64 52.455H45.788L44.529 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.914l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/><path fill="#fff" d="M63.962 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.336-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"/></svg>
+            <span class="skill-icon-name">HTML / Web</span>
+          </div>
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#F34F29" d="M124.737 58.378L69.621 3.264c-3.172-3.174-8.32-3.174-11.497 0L46.68 14.71l14.518 14.518c3.375-1.139 7.243-.375 9.932 2.314 2.703 2.706 3.461 6.607 2.294 9.993l13.992 13.993c3.385-1.167 7.292-.413 9.994 2.295 3.78 3.777 3.78 9.9 0 13.679a9.667 9.667 0 01-13.683 0 9.716 9.716 0 01-2.105-10.521L68.574 47.933l-.002 34.341a9.708 9.708 0 012.559 1.828c3.778 3.777 3.778 9.898 0 13.683-3.779 3.777-9.904 3.777-13.679 0-3.778-3.785-3.778-9.906 0-13.683a9.65 9.65 0 013.167-2.11V47.333a9.581 9.581 0 01-3.167-2.111c-2.862-2.86-3.551-7.06-2.083-10.576L40.836 20.333 3.263 57.906c-3.172 3.175-3.172 8.32 0 11.497l55.115 55.114c3.174 3.174 8.32 3.174 11.499 0l54.86-54.861c3.175-3.176 3.175-8.323 0-11.278z"/></svg>
+            <span class="skill-icon-name">Git / GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-group">
+        <div class="detail-group-title" data-i18n="about.languages">Idiomes</div>
+        <div class="lang-list">
+          <div class="lang-item"><span class="lang-name" data-i18n="about.lang1">Català</span><span class="lang-level" data-i18n="about.native">Natiu</span></div>
+          <div class="lang-item"><span class="lang-name" data-i18n="about.lang2">Castellà</span><span class="lang-level" data-i18n="about.native">Natiu</span></div>
+          <div class="lang-item"><span class="lang-name" data-i18n="about.lang3">Anglès</span><span class="lang-level" data-i18n="about.b2">B2 — Intermedi-alt</span></div>
+        </div>
+      </div>
+
+      <div class="detail-group">
+        <div class="detail-group-title" data-i18n="about.tools">Eines i plataformes</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;">
+          <span class="feature-tag">Git / GitHub</span>
+          <span class="feature-tag">IntelliJ IDEA</span>
+          <span class="feature-tag">VS Code</span>
+          <span class="feature-tag">Docker</span>
+          <span class="feature-tag">Figma</span>
+          <span class="feature-tag">Linux terminal</span>
+          <span class="feature-tag">MySQL</span>
+          <span class="feature-tag">SQLite</span>
+          <span class="feature-tag">Firebase</span>
+          <span class="feature-tag">Supabase</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title" data-i18n="sections.experience">Experiència</h2>
+  </div>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-date" data-i18n="exp.date1">Jul 2025<br>Nov 2025</div>
+      <div class="timeline-line">
+        <div class="timeline-dot"></div>
+        <div class="timeline-connector"></div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role" data-i18n="exp.role1">Tècnic informàtic</div>
+        <div class="timeline-company" data-i18n="exp.company1">LLAGOS 2005, S.L. — Botiga d'informàtica</div>
+        <div class="timeline-desc" data-i18n="exp.desc1">
+          Suport tècnic a equips informàtics, manteniment de maquinari, resolució d'incidències, configuració de xarxes i atenció al client.
+        </div>
+        <div class="timeline-tags">
+          <span class="timeline-tag" data-i18n="exp.tag1a">Suport tècnic</span>
+          <span class="timeline-tag" data-i18n="exp.tag1b">Xarxes</span>
+          <span class="timeline-tag" data-i18n="exp.tag1c">Maquinari</span>
+          <span class="timeline-tag" data-i18n="exp.tag1d">Atenció al client</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date" data-i18n="exp.date2">Nov 2024<br>Mai 2025</div>
+      <div class="timeline-line">
+        <div class="timeline-dot"></div>
+        <div class="timeline-connector"></div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role" data-i18n="exp.role2">Pràctiques formatives</div>
+        <div class="timeline-company" data-i18n="exp.company2">LLAGOS 2005, S.L. — Botiga d'informàtica</div>
+        <div class="timeline-desc" data-i18n="exp.desc2">
+          Reparació i manteniment d'ordinadors, instal·lació de sistemes operatius i programari, preparació i posada a punt d'equips.
+        </div>
+        <div class="timeline-tags">
+          <span class="timeline-tag" data-i18n="exp.tag2a">Reparació</span>
+          <span class="timeline-tag" data-i18n="exp.tag2b">Sistemes operatius</span>
+          <span class="timeline-tag" data-i18n="exp.tag2c">Instal·lació de programari</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date" data-i18n="exp.date3">Actualitat</div>
+      <div class="timeline-line">
+        <div class="timeline-dot" style="background: var(--accent2);"></div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role" data-i18n="exp.role3">DAM — Grau Superior</div>
+        <div class="timeline-company" data-i18n="exp.company3">Institut Pla de l'Estany, Banyoles</div>
+        <div class="timeline-desc" data-i18n="exp.desc3">
+          Cicle Formatiu de Grau Superior en Desenvolupament d'Aplicacions Multiplataforma. Anteriorment completat el Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX) al mateix centre.
+        </div>
+        <div class="timeline-tags">
+          <span class="timeline-tag">DAM</span>
+          <span class="timeline-tag" data-i18n="exp.ongoing">En curs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <h2 class="contact-heading" data-i18n-html="contact.heading">Treballem<br><span>junts?</span></h2>
+      <p class="contact-sub" data-i18n="contact.sub">
+        Estic obert a noves oportunitats, col·laboracions i projectes interessants. No dubtis en contactar-me.
+      </p>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:paubalsoj@gmail.com" class="contact-item">
+        <div class="contact-item-left">
+          <div class="contact-icon email">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">paubalsoj@gmail.com</div>
+          </div>
+        </div>
+        <span class="contact-arrow">↗</span>
+      </a>
+      <a href="https://github.com/Pau-Balsach" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-item-left">
+          <div class="contact-icon github">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/Pau-Balsach</div>
+          </div>
+        </div>
+        <span class="contact-arrow">↗</span>
+      </a>
+      <a href="tel:+34692182182" class="contact-item">
+        <div class="contact-item-left">
+          <div class="contact-icon phone">☎</div>
+          <div>
+            <div class="contact-label" data-i18n="contact.phone">Telèfon</div>
+            <div class="contact-value">+34 692 182 182</div>
+          </div>
+        </div>
+        <span class="contact-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p data-i18n="footer.text">Dissenyat i desenvolupat per <span>Pau Balsach</span> — 2026</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => { entry.target.classList.add('visible'); }, 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── TRANSLATIONS ────────────────────────────────────────────────────────────
+const translations = {
+  ca: {
+    'nav.projects': 'Projectes',
+    'nav.about': 'Sobre mi',
+    'nav.experience': 'Experiència',
+    'nav.contact': 'Contacte',
+    'hero.title': 'Crafting<br><span class="line-dim">backend</span><br>systems',
+    'hero.sub': 'Estudiant de DAM especialitzat en arquitectures distribuïdes, aplicacions mòbils i sistemes segurs. Apassionat de transformar idees en productes reals.',
+    'hero.cta': 'Veure projectes',
+    'stats.projects': 'Projectes complets',
+    'stats.repos': 'Repos públics',
+    'stats.age': 'Anys',
+    'sections.projects': 'Projectes',
+    'sections.about': 'Sobre mi',
+    'sections.experience': 'Experiència',
+    'apptaxis.short': 'Plataforma de gestió de flotes amb arquitectura distribuïda (desktop, mobile i API).',
+    'apptaxis.desc': 'Sistema complet per a la gestió de flotes de taxi que centralitza l\'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l\'assignació de serveis i el control d\'activitat.',
+    'apptaxis.f1': 'Calendari interactiu',
+    'apptaxis.f2': 'Gestió de conductors',
+    'apptaxis.f3': 'API documentada',
+    'apptaxis.f4': 'Arquitectura client-servidor',
+    'apptaxis.f5': 'Multi-plataforma',
+    'apptaxis.arch': 'Arquitectura distribuïda — Desktop · Mobile · API · Auth',
+    'gestor.short': 'Gestor de contrasenyes amb xifratge AES-256 i arquitectura zero-knowledge.',
+    'gestor.desc': 'Aplicació d\'escriptori enfocada en la gestió segura de credencials, implementant xifratge avançat i control d\'accés basat en autenticació forta. La contrasenya mestra mai s\'emmagatzema: es deriva amb PBKDF2 i s\'usa localment.',
+    'gestor.f1': 'Recuperació per email',
+    'gestor.f2': 'Organització per categories',
+    'track.short': 'Eina d\'anàlisi d\'hàbits de lectura amb sincronització cloud i suport offline.',
+    'track.desc': 'Aplicació d\'escriptori per al seguiment i anàlisi d\'hàbits de lectura. Permet registrar sessions, mesurar rendiment i visualitzar estadístiques detallades per llibre, amb sincronització automàtica al núvol i mode offline complet.',
+    'track.f1': 'Estadístiques per llibre',
+    'track.f2': 'Mode offline',
+    'track.f3': 'Exportació CSV/imatge',
+    'track.f4': 'Tema clar / fosc',
+    'track.f5': 'Portades automàtiques',
+    'track.arch': 'Mode dual: Accés com a convidat (offline) o sincronització Cloud amb compte personal.',
+    'about.p1': 'Soc en <strong>Pau Balsach</strong>, estudiant de Cicle Formatiu de Grau Superior en Desenvolupament d\'Aplicacions Multiplataforma (DAM) a l\'Institut Pla de l\'Estany, Banyoles.',
+    'about.p2': 'M\'apassiona construir sistemes complets, des del <strong>backend i APIs</strong> fins a interfícies d\'escriptori i aplicacions mòbils. Gaudeixo especialment dels reptes d\'arquitectura distribuïda i de la implementació de mecanismes de seguretat robustos.',
+    'about.p3': 'Fora del codi, he participat en un voluntariat per reparar ordinadors per a escoles amb pocs recursos de l\'Àfrica, i he dedicat 4 anys a activitats extraescolars de <strong>programació i robòtica</strong> amb Python.',
+    'about.skills': 'Habilitats tècniques',
+    'about.languages': 'Idiomes',
+    'about.lang1': 'Català',
+    'about.lang2': 'Castellà',
+    'about.lang3': 'Anglès',
+    'about.native': 'Natiu',
+    'about.b2': 'B2 — Intermedi-alt',
+    'about.tools': 'Eines i plataformes',
+    'exp.date1': 'Jul 2025<br>Nov 2025',
+    'exp.date2': 'Nov 2024<br>Mai 2025',
+    'exp.date3': 'Actualitat',
+    'exp.role1': 'Tècnic informàtic',
+    'exp.company1': 'LLAGOS 2005, S.L. — Botiga d\'informàtica',
+    'exp.desc1': 'Suport tècnic a equips informàtics, manteniment de maquinari, resolució d\'incidències, configuració de xarxes i atenció al client.',
+    'exp.tag1a': 'Suport tècnic',
+    'exp.tag1b': 'Xarxes',
+    'exp.tag1c': 'Maquinari',
+    'exp.tag1d': 'Atenció al client',
+    'exp.role2': 'Pràctiques formatives',
+    'exp.company2': 'LLAGOS 2005, S.L. — Botiga d\'informàtica',
+    'exp.desc2': 'Reparació i manteniment d\'ordinadors, instal·lació de sistemes operatius i programari, preparació i posada a punt d\'equips.',
+    'exp.tag2a': 'Reparació',
+    'exp.tag2b': 'Sistemes operatius',
+    'exp.tag2c': 'Instal·lació de programari',
+    'exp.role3': 'DAM — Grau Superior',
+    'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
+    'exp.desc3': 'Cicle Formatiu de Grau Superior en Desenvolupament d\'Aplicacions Multiplataforma. Anteriorment completat el Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX) al mateix centre.',
+    'exp.ongoing': 'En curs',
+    'contact.heading': 'Treballem<br><span>junts?</span>',
+    'contact.sub': 'Estic obert a noves oportunitats, col·laboracions i projectes interessants. No dubtis en contactar-me.',
+    'contact.phone': 'Telèfon',
+    'footer.text': 'Dissenyat i desenvolupat per <span>Pau Balsach</span> — 2026',
+  },
+  es: {
+    'nav.projects': 'Proyectos',
+    'nav.about': 'Sobre mí',
+    'nav.experience': 'Experiencia',
+    'nav.contact': 'Contacto',
+    'hero.title': 'Crafting<br><span class="line-dim">backend</span><br>systems',
+    'hero.sub': 'Estudiante de DAM especializado en arquitecturas distribuidas, aplicaciones móviles y sistemas seguros. Apasionado por transformar ideas en productos reales.',
+    'hero.cta': 'Ver proyectos',
+    'stats.projects': 'Proyectos completos',
+    'stats.repos': 'Repos públicos',
+    'stats.age': 'Años',
+    'sections.projects': 'Proyectos',
+    'sections.about': 'Sobre mí',
+    'sections.experience': 'Experiencia',
+    'apptaxis.short': 'Plataforma de gestión de flotas con arquitectura distribuida (desktop, mobile y API).',
+    'apptaxis.desc': 'Sistema completo para la gestión de flotas de taxi que centraliza la administración de conductores, servicios y planificación operativa diaria. Permite visualizar y organizar la logística mediante un calendario interactivo, facilitando la asignación de servicios y el control de actividad.',
+    'apptaxis.f1': 'Calendario interactivo',
+    'apptaxis.f2': 'Gestión de conductores',
+    'apptaxis.f3': 'API documentada',
+    'apptaxis.f4': 'Arquitectura cliente-servidor',
+    'apptaxis.f5': 'Multi-plataforma',
+    'apptaxis.arch': 'Arquitectura distribuida — Desktop · Mobile · API · Auth',
+    'gestor.short': 'Gestor de contraseñas con cifrado AES-256 y arquitectura zero-knowledge.',
+    'gestor.desc': 'Aplicación de escritorio enfocada en la gestión segura de credenciales, implementando cifrado avanzado y control de acceso basado en autenticación fuerte. La contraseña maestra nunca se almacena: se deriva con PBKDF2 y se usa localmente.',
+    'gestor.f1': 'Recuperación por email',
+    'gestor.f2': 'Organización por categorías',
+    'track.short': 'Herramienta de análisis de hábitos de lectura con sincronización cloud y soporte offline.',
+    'track.desc': 'Aplicación de escritorio para el seguimiento y análisis de hábitos de lectura. Permite registrar sesiones, medir rendimiento y visualizar estadísticas detalladas por libro, con sincronización automática en la nube y modo offline completo.',
+    'track.f1': 'Estadísticas por libro',
+    'track.f2': 'Modo offline',
+    'track.f3': 'Exportación CSV/imagen',
+    'track.f4': 'Tema claro / oscuro',
+    'track.f5': 'Portadas automáticas',
+    'track.arch': 'Modo dual: Acceso como invitado (offline) o sincronización Cloud con cuenta personal.',
+    'about.p1': 'Soy <strong>Pau Balsach</strong>, estudiante de Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM) en el Institut Pla de l\'Estany, Banyoles.',
+    'about.p2': 'Me apasiona construir sistemas completos, desde el <strong>backend y APIs</strong> hasta interfaces de escritorio y aplicaciones móviles. Disfruto especialmente de los retos de arquitectura distribuida y de la implementación de mecanismos de seguridad robustos.',
+    'about.p3': 'Fuera del código, he participado en un voluntariado para reparar ordenadores para escuelas con pocos recursos de África, y he dedicado 4 años a actividades extraescolares de <strong>programación y robótica</strong> con Python.',
+    'about.skills': 'Habilidades técnicas',
+    'about.languages': 'Idiomas',
+    'about.lang1': 'Catalán',
+    'about.lang2': 'Castellano',
+    'about.lang3': 'Inglés',
+    'about.native': 'Nativo',
+    'about.b2': 'B2 — Intermedio-alto',
+    'about.tools': 'Herramientas y plataformas',
+    'exp.date1': 'Jul 2025<br>Nov 2025',
+    'exp.date2': 'Nov 2024<br>May 2025',
+    'exp.date3': 'Actualidad',
+    'exp.role1': 'Técnico informático',
+    'exp.company1': 'LLAGOS 2005, S.L. — Tienda de informática',
+    'exp.desc1': 'Soporte técnico a equipos informáticos, mantenimiento de hardware, resolución de incidencias, configuración de redes y atención al cliente.',
+    'exp.tag1a': 'Soporte técnico',
+    'exp.tag1b': 'Redes',
+    'exp.tag1c': 'Hardware',
+    'exp.tag1d': 'Atención al cliente',
+    'exp.role2': 'Prácticas formativas',
+    'exp.company2': 'LLAGOS 2005, S.L. — Tienda de informática',
+    'exp.desc2': 'Reparación y mantenimiento de ordenadores, instalación de sistemas operativos y software, preparación y puesta a punto de equipos.',
+    'exp.tag2a': 'Reparación',
+    'exp.tag2b': 'Sistemas operativos',
+    'exp.tag2c': 'Instalación de software',
+    'exp.role3': 'DAM — Grado Superior',
+    'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
+    'exp.desc3': 'Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Anteriormente completado el Grado Medio en Sistemas Microinformáticos y Redes (SMX) en el mismo centro.',
+    'exp.ongoing': 'En curso',
+    'contact.heading': '¿Trabajamos<br><span>juntos?</span>',
+    'contact.sub': 'Estoy abierto a nuevas oportunidades, colaboraciones y proyectos interesantes. No dudes en contactarme.',
+    'contact.phone': 'Teléfono',
+    'footer.text': 'Diseñado y desarrollado por <span>Pau Balsach</span> — 2026',
+  },
+  en: {
+    'nav.projects': 'Projects',
+    'nav.about': 'About',
+    'nav.experience': 'Experience',
+    'nav.contact': 'Contact',
+    'hero.title': 'Crafting<br><span class="line-dim">backend</span><br>systems',
+    'hero.sub': 'DAM student specialised in distributed architectures, mobile apps and secure systems. Passionate about turning ideas into real products.',
+    'hero.cta': 'View projects',
+    'stats.projects': 'Completed projects',
+    'stats.repos': 'Public repos',
+    'stats.age': 'Years old',
+    'sections.projects': 'Projects',
+    'sections.about': 'About me',
+    'sections.experience': 'Experience',
+    'apptaxis.short': 'Fleet management platform with distributed architecture (desktop, mobile and API).',
+    'apptaxis.desc': 'Complete system for taxi fleet management that centralises driver administration, services and daily operational planning. It allows visualising and organising logistics through an interactive calendar, facilitating service assignment and activity tracking.',
+    'apptaxis.f1': 'Interactive calendar',
+    'apptaxis.f2': 'Driver management',
+    'apptaxis.f3': 'Documented API',
+    'apptaxis.f4': 'Client-server architecture',
+    'apptaxis.f5': 'Multi-platform',
+    'apptaxis.arch': 'Distributed architecture — Desktop · Mobile · API · Auth',
+    'gestor.short': 'Password manager with AES-256 encryption and zero-knowledge architecture.',
+    'gestor.desc': 'Desktop application focused on secure credential management, implementing advanced encryption and access control based on strong authentication. The master password is never stored: it is derived with PBKDF2 and used locally.',
+    'gestor.f1': 'Email recovery',
+    'gestor.f2': 'Category organisation',
+    'track.short': 'Reading habit analysis tool with cloud sync and offline support.',
+    'track.desc': 'Desktop application for tracking and analysing reading habits. It allows logging sessions, measuring performance and visualising detailed statistics per book, with automatic cloud synchronisation and full offline mode.',
+    'track.f1': 'Per-book statistics',
+    'track.f2': 'Offline mode',
+    'track.f3': 'CSV/image export',
+    'track.f4': 'Light / dark theme',
+    'track.f5': 'Automatic covers',
+    'track.arch': 'Dual mode: Guest access (offline) or Cloud sync with personal account.',
+    'about.p1': 'I\'m <strong>Pau Balsach</strong>, a student of the Higher Degree in Multiplatform Application Development (DAM) at Institut Pla de l\'Estany, Banyoles.',
+    'about.p2': 'I\'m passionate about building complete systems, from <strong>backend and APIs</strong> to desktop interfaces and mobile applications. I especially enjoy distributed architecture challenges and implementing robust security mechanisms.',
+    'about.p3': 'Outside of code, I\'ve volunteered to repair computers for under-resourced schools in Africa, and I\'ve spent 4 years in extracurricular <strong>programming and robotics</strong> activities with Python.',
+    'about.skills': 'Technical skills',
+    'about.languages': 'Languages',
+    'about.lang1': 'Catalan',
+    'about.lang2': 'Spanish',
+    'about.lang3': 'English',
+    'about.native': 'Native',
+    'about.b2': 'B2 — Upper-intermediate',
+    'about.tools': 'Tools & platforms',
+    'exp.date1': 'Jul 2025<br>Nov 2025',
+    'exp.date2': 'Nov 2024<br>May 2025',
+    'exp.date3': 'Present',
+    'exp.role1': 'IT Technician',
+    'exp.company1': 'LLAGOS 2005, S.L. — Computer store',
+    'exp.desc1': 'Technical support for computer equipment, hardware maintenance, incident resolution, network configuration and customer service.',
+    'exp.tag1a': 'Tech support',
+    'exp.tag1b': 'Networks',
+    'exp.tag1c': 'Hardware',
+    'exp.tag1d': 'Customer service',
+    'exp.role2': 'Internship',
+    'exp.company2': 'LLAGOS 2005, S.L. — Computer store',
+    'exp.desc2': 'Computer repair and maintenance, operating system and software installation, equipment setup and configuration.',
+    'exp.tag2a': 'Repair',
+    'exp.tag2b': 'Operating systems',
+    'exp.tag2c': 'Software installation',
+    'exp.role3': 'DAM — Higher Degree',
+    'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
+    'exp.desc3': 'Higher Degree in Multiplatform Application Development. Previously completed the Intermediate Degree in Microcomputer Systems and Networks (SMX) at the same school.',
+    'exp.ongoing': 'Ongoing',
+    'contact.heading': 'Shall we work<br><span>together?</span>',
+    'contact.sub': 'I\'m open to new opportunities, collaborations and interesting projects. Feel free to reach out.',
+    'contact.phone': 'Phone',
+    'footer.text': 'Designed and developed by <span>Pau Balsach</span> — 2026',
+  }
+};
+
+let currentLang = 'ca';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+
+  // Update all text nodes (innerHTML to support <strong>, <br>, etc.)
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Update all innerHTML nodes (for elements with HTML like <br> or <strong>)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Save preference
+  localStorage.setItem('lang', lang);
+}
+
+// Load saved language on page load
+const savedLang = localStorage.getItem('lang') || 'ca';
+setLang(savedLang);
+</script>
+</body>
+</html>
