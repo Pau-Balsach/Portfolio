@@ -805,6 +805,44 @@
     letter-spacing: 0.03em;
   }
 
+  /* EXPERIENCE TWO-COLUMN LAYOUT */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .exp-col-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .exp-col-title-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .exp-col-title-dot.blue {
+    background: var(--accent2);
+  }
+
+  @media (max-width: 900px) {
+    .experience-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
   /* CONTACT */
   #contact {
     background: var(--bg2);
@@ -1261,65 +1299,103 @@
     <h2 class="section-title" data-i18n="sections.experience">Experiència</h2>
   </div>
 
-  <div class="timeline reveal">
-    <div class="timeline-item">
-      <div class="timeline-date" data-i18n="exp.date1">Jul 2025<br>Nov 2025</div>
-      <div class="timeline-line">
-        <div class="timeline-dot"></div>
-        <div class="timeline-connector"></div>
+  <div class="experience-grid">
+
+    <!-- LEFT: Work Experience -->
+    <div class="reveal">
+      <div class="exp-col-title">
+        <span class="exp-col-title-dot"></span>
+        <span data-i18n="sections.exp_work">Experiència Laboral</span>
       </div>
-      <div class="timeline-content">
-        <div class="timeline-role" data-i18n="exp.role1">Tècnic informàtic</div>
-        <div class="timeline-company" data-i18n="exp.company1">LLAGOS 2005, S.L. — Botiga d'informàtica</div>
-        <div class="timeline-desc" data-i18n="exp.desc1">
-          Suport tècnic a equips informàtics, manteniment de maquinari, resolució d'incidències, configuració de xarxes i atenció al client.
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date" data-i18n="exp.date2">Nov 2024<br>Mai 2025</div>
+          <div class="timeline-line">
+            <div class="timeline-dot"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-role" data-i18n="exp.role2">Pràctiques formatives</div>
+            <div class="timeline-company" data-i18n="exp.company2">LLAGOS 2005, S.L. — Botiga d'informàtica</div>
+            <div class="timeline-desc" data-i18n="exp.desc2">
+              Reparació i manteniment d'ordinadors, instal·lació de sistemes operatius i programari, preparació i posada a punt d'equips.
+            </div>
+            <div class="timeline-tags">
+              <span class="timeline-tag" data-i18n="exp.tag2a">Reparació</span>
+              <span class="timeline-tag" data-i18n="exp.tag2b">Sistemes operatius</span>
+              <span class="timeline-tag" data-i18n="exp.tag2c">Instal·lació de programari</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-tags">
-          <span class="timeline-tag" data-i18n="exp.tag1a">Suport tècnic</span>
-          <span class="timeline-tag" data-i18n="exp.tag1b">Xarxes</span>
-          <span class="timeline-tag" data-i18n="exp.tag1c">Maquinari</span>
-          <span class="timeline-tag" data-i18n="exp.tag1d">Atenció al client</span>
+
+        <div class="timeline-item">
+          <div class="timeline-date" data-i18n="exp.date1">Jul 2025<br>Nov 2025</div>
+          <div class="timeline-line">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-role" data-i18n="exp.role1">Tècnic informàtic</div>
+            <div class="timeline-company" data-i18n="exp.company1">LLAGOS 2005, S.L. — Botiga d'informàtica</div>
+            <div class="timeline-desc" data-i18n="exp.desc1">
+              Suport tècnic a equips informàtics, manteniment de maquinari, resolució d'incidències, configuració de xarxes i atenció al client.
+            </div>
+            <div class="timeline-tags">
+              <span class="timeline-tag" data-i18n="exp.tag1a">Suport tècnic</span>
+              <span class="timeline-tag" data-i18n="exp.tag1b">Xarxes</span>
+              <span class="timeline-tag" data-i18n="exp.tag1c">Maquinari</span>
+              <span class="timeline-tag" data-i18n="exp.tag1d">Atenció al client</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-date" data-i18n="exp.date2">Nov 2024<br>Mai 2025</div>
-      <div class="timeline-line">
-        <div class="timeline-dot"></div>
-        <div class="timeline-connector"></div>
+    <!-- RIGHT: Education -->
+    <div class="reveal">
+      <div class="exp-col-title">
+        <span class="exp-col-title-dot blue"></span>
+        <span data-i18n="sections.exp_edu">Formació Acadèmica</span>
       </div>
-      <div class="timeline-content">
-        <div class="timeline-role" data-i18n="exp.role2">Pràctiques formatives</div>
-        <div class="timeline-company" data-i18n="exp.company2">LLAGOS 2005, S.L. — Botiga d'informàtica</div>
-        <div class="timeline-desc" data-i18n="exp.desc2">
-          Reparació i manteniment d'ordinadors, instal·lació de sistemes operatius i programari, preparació i posada a punt d'equips.
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date" data-i18n="exp.date4">2023<br>2025</div>
+          <div class="timeline-line">
+            <div class="timeline-dot" style="background: var(--accent2);"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-role" data-i18n="exp.role4">SMX — Grau Mitjà</div>
+            <div class="timeline-company" data-i18n="exp.company4">Institut Pla de l'Estany, Banyoles</div>
+            <div class="timeline-desc" data-i18n="exp.desc4">
+              Cicle Formatiu de Grau Mitjà en Sistemes Microinformàtics i Xarxes. Completat satisfactòriament.
+            </div>
+            <div class="timeline-tags">
+              <span class="timeline-tag">SMX</span>
+              <span class="timeline-tag" data-i18n="exp.completed">Completat</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-tags">
-          <span class="timeline-tag" data-i18n="exp.tag2a">Reparació</span>
-          <span class="timeline-tag" data-i18n="exp.tag2b">Sistemes operatius</span>
-          <span class="timeline-tag" data-i18n="exp.tag2c">Instal·lació de programari</span>
+
+        <div class="timeline-item">
+          <div class="timeline-date" data-i18n="exp.date3">Actualitat</div>
+          <div class="timeline-line">
+            <div class="timeline-dot" style="background: var(--accent2);"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-role" data-i18n="exp.role3">DAM — Grau Superior</div>
+            <div class="timeline-company" data-i18n="exp.company3">Institut Pla de l'Estany, Banyoles</div>
+            <div class="timeline-desc" data-i18n="exp.desc3">
+              Cicle Formatiu de Grau Superior en Desenvolupament d'Aplicacions Multiplataforma. Anteriorment completat el Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX) al mateix centre.
+            </div>
+            <div class="timeline-tags">
+              <span class="timeline-tag">DAM</span>
+              <span class="timeline-tag" data-i18n="exp.ongoing">En curs</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-date" data-i18n="exp.date3">Actualitat</div>
-      <div class="timeline-line">
-        <div class="timeline-dot" style="background: var(--accent2);"></div>
-      </div>
-      <div class="timeline-content">
-        <div class="timeline-role" data-i18n="exp.role3">DAM — Grau Superior</div>
-        <div class="timeline-company" data-i18n="exp.company3">Institut Pla de l'Estany, Banyoles</div>
-        <div class="timeline-desc" data-i18n="exp.desc3">
-          Cicle Formatiu de Grau Superior en Desenvolupament d'Aplicacions Multiplataforma. Anteriorment completat el Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX) al mateix centre.
-        </div>
-        <div class="timeline-tags">
-          <span class="timeline-tag">DAM</span>
-          <span class="timeline-tag" data-i18n="exp.ongoing">En curs</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1450,6 +1526,13 @@ const translations = {
     'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
     'exp.desc3': 'Cicle Formatiu de Grau Superior en Desenvolupament d\'Aplicacions Multiplataforma. Anteriorment completat el Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX) al mateix centre.',
     'exp.ongoing': 'En curs',
+    'exp.completed': 'Completat',
+    'exp.date4': '2023<br>2025',
+    'exp.role4': 'SMX — Grau Mitjà',
+    'exp.company4': 'Institut Pla de l\'Estany, Banyoles',
+    'exp.desc4': 'Cicle Formatiu de Grau Mitjà en Sistemes Microinformàtics i Xarxes. Completat satisfactòriament.',
+    'sections.exp_work': 'Experiència Laboral',
+    'sections.exp_edu': 'Formació Acadèmica',
     'contact.heading': 'Treballem<br><span>junts?</span>',
     'contact.sub': 'Estic obert a noves oportunitats, col·laboracions i projectes interessants. No dubtis en contactar-me.',
     'contact.phone': 'Telèfon',
@@ -1520,6 +1603,13 @@ const translations = {
     'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
     'exp.desc3': 'Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Anteriormente completado el Grado Medio en Sistemas Microinformáticos y Redes (SMX) en el mismo centro.',
     'exp.ongoing': 'En curso',
+    'exp.completed': 'Completado',
+    'exp.date4': '2023<br>2025',
+    'exp.role4': 'SMX — Grado Medio',
+    'exp.company4': 'Institut Pla de l\'Estany, Banyoles',
+    'exp.desc4': 'Ciclo Formativo de Grado Medio en Sistemas Microinformáticos y Redes. Completado satisfactoriamente.',
+    'sections.exp_work': 'Experiencia Laboral',
+    'sections.exp_edu': 'Formación Académica',
     'contact.heading': '¿Trabajamos<br><span>juntos?</span>',
     'contact.sub': 'Estoy abierto a nuevas oportunidades, colaboraciones y proyectos interesantes. No dudes en contactarme.',
     'contact.phone': 'Teléfono',
@@ -1590,6 +1680,13 @@ const translations = {
     'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
     'exp.desc3': 'Higher Degree in Multiplatform Application Development. Previously completed the Intermediate Degree in Microcomputer Systems and Networks (SMX) at the same school.',
     'exp.ongoing': 'Ongoing',
+    'exp.completed': 'Completed',
+    'exp.date4': '2023<br>2025',
+    'exp.role4': 'SMX — Intermediate Degree',
+    'exp.company4': 'Institut Pla de l\'Estany, Banyoles',
+    'exp.desc4': 'Intermediate Degree in Microcomputer Systems and Networks. Successfully completed.',
+    'sections.exp_work': 'Work Experience',
+    'sections.exp_edu': 'Education',
     'contact.heading': 'Shall we work<br><span>together?</span>',
     'contact.sub': 'I\'m open to new opportunities, collaborations and interesting projects. Feel free to reach out.',
     'contact.phone': 'Phone',
