@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -480,6 +480,10 @@
   .tech-badge.flutter { background: rgba(93,228,255,0.1); color: #64b5f6; }
   .tech-badge.security { background: rgba(255,107,107,0.1); color: #ff6b6b; }
   .tech-badge.swagger { background: rgba(127,255,110,0.1); color: #7fff6e; }
+  .tech-badge.nextjs { background: rgba(255,255,255,0.08); color: #e0e0e0; }
+  .tech-badge.springboot { background: rgba(109,179,63,0.15); color: #6db33f; }
+  .tech-badge.groq { background: rgba(255,107,107,0.12); color: #ff8c8c; }
+  .tech-badge.vercel { background: rgba(255,255,255,0.06); color: #ccc; }
 
   .project-links {
     display: flex;
@@ -643,7 +647,7 @@
     line-height: 1.2;
   }
 
-  /* VIDEO DEMO */
+
   .project-video-wrap {
     margin-top: 1.5rem;
     border-radius: 8px;
@@ -1021,7 +1025,7 @@
 
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-number">3+</div>
+      <div class="stat-number">4+</div>
       <div class="stat-label" data-i18n="stats.projects">Full projects</div>
     </div>
     <div class="stat-item">
@@ -1151,7 +1155,56 @@
       </div>
     </div>
 
-    <!-- TrackLectura (posición 03) -->
+    <!-- CV Analyzer (posición 03) -->
+    <div class="project-card accent-blue reveal" style="margin-bottom: 1.5rem;">
+      <div class="project-main">
+        <div class="project-header">
+          <div class="project-icon blue">🤖</div>
+          <h3 class="project-name">AI CV Analyzer</h3>
+        </div>
+        <p class="project-short" data-i18n="cvanalyzer.short">Analizador de CVs con IA (Groq/Mistral) que genera feedback estructurado y se adapta al idioma del navegador.</p>
+        <p class="project-desc" data-i18n="cvanalyzer.desc">
+          Sistema full-stack cloud que procesa CVs en PDF con Groq y Mistral-7B, devolviendo análisis estructurado con puntuación, puntos fuertes, mejoras y keywords ATS. Incluye Job Matching contra ofertas de trabajo y soporte multiidioma automático según el navegador del usuario.        </p>
+        <div class="project-features">
+          <span class="feature-tag" data-i18n="cvanalyzer.f1">Anàlisi per seccions</span>
+          <span class="feature-tag" data-i18n="cvanalyzer.f2">Job Matching</span>
+          <span class="feature-tag" data-i18n="cvanalyzer.f3">Multiidioma (i18n)</span>
+          <span class="feature-tag" data-i18n="cvanalyzer.f4">Rate limiting</span>
+          <span class="feature-tag" data-i18n="cvanalyzer.f5">Auth amb Supabase</span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-badge nextjs">Next.js</span>
+          <span class="tech-badge springboot">Spring Boot</span>
+          <span class="tech-badge groq">Groq / Mistral</span>
+          <span class="tech-badge supabase">Supabase</span>
+          <span class="tech-badge postgres">PostgreSQL</span>
+          <span class="tech-badge docker">Docker</span>
+          <span class="tech-badge vercel">Vercel</span>
+        </div>
+        <div class="arch-banner" style="border-color: rgba(93,228,255,0.2); background: rgba(93,228,255,0.04);">
+          <div class="arch-dot" style="background: #5de4ff;"></div>
+          <span class="arch-banner-label" style="color: #5de4ff;" data-i18n="cvanalyzer.arch">LLM-powered — Groq · Mistral-7B · Next.js (Vercel) · Spring Boot (Render) · Supabase</span>
+        </div>
+        <div class="project-video-wrap">
+          <video src="videos/CVanalyzer-demo.mp4" controls muted loop playsinline></video>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-number">03</div>
+        <div class="project-repo-links">
+          <a href="https://github.com/Pau-Balsach/cv-analyzer-frontend" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Frontend (Next.js)
+          </a>
+          <a href="https://github.com/Pau-Balsach/cv-analyzer-backend" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Backend (Spring Boot)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TrackLectura (posición 04) -->
     <div class="project-card accent-blue reveal">
       <div class="project-main">
         <div class="project-header">
@@ -1183,7 +1236,7 @@
           </div>
         </div>
       <div class="project-links">
-        <div class="project-number">03</div>
+        <div class="project-number">04</div>
         <div class="project-repo-links">
           <a href="https://github.com/Pau-Balsach/tracklectura-code" target="_blank" rel="noopener" class="repo-link">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1205,7 +1258,7 @@
 <section id="about">
   <div class="section-header">
     <span class="section-num">02</span>
-    <h2 class="section-title" data-i18n="sections.about">Sobre mí</h2>
+    <h2 class="section-title" data-i18n="sections.about">Sobre mi</h2>
   </div>
 
   <div class="about-grid">
@@ -1251,6 +1304,21 @@
             <span class="skill-icon-name">Python</span>
           </div>
           <div class="skill-icon-item">
+            <!-- Next.js icon -->
+            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64c11.2 0 21.7-2.9 30.8-7.9L48.4 55.3v36.6H36.4V36.4h18l44 64.1c-.1.1-.2.1-.3.2C89.7 107.4 77.4 112 64 112c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 5.8-1 11.3-2.9 16.4l11.1 16.1C124.1 89.1 128 77 128 64c0-35.3-28.7-64-64-64z" fill="#fff"/><path d="M91.4 71.3L79.7 55v37h11.7V71.3z" fill="#fff"/></svg>
+            <span class="skill-icon-name">Next.js</span>
+          </div>
+          <div class="skill-icon-item">
+            <!-- TypeScript icon -->
+            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#3178c6" d="M2 63.91v62.5h125v-125H2zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1 23 23 0 01-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a9.34 9.34 0 011.15-.73l4.6-2.64 3.59-2.08.75 1.11a16.78 16.78 0 004.74 4.54c4 2.1 9.46 1.81 12.16-.62a5.43 5.43 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H56.58v46.23H45.05V69.26H28.37v-5a49.19 49.19 0 01.14-5.16c.06-.08 10-.12 22-.1l21.88.06z"/></svg>
+            <span class="skill-icon-name">TypeScript</span>
+          </div>
+          <div class="skill-icon-item">
+            <!-- AI / Prompt icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M12 2a4 4 0 014 4v1h1a3 3 0 013 3v6a3 3 0 01-3 3H7a3 3 0 01-3-3V10a3 3 0 013-3h1V6a4 4 0 014-4z" stroke="#ff8c8c" stroke-width="1.5"/><circle cx="9" cy="13" r="1" fill="#ff8c8c"/><circle cx="12" cy="13" r="1" fill="#ff8c8c"/><circle cx="15" cy="13" r="1" fill="#ff8c8c"/></svg>
+            <span class="skill-icon-name">IA / LLMs</span>
+          </div>
+          <div class="skill-icon-item">
             <!-- Testing / beaker icon -->
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M9 3h6M9 3v8l-4 7a1 1 0 00.9 1.5h12.2a1 1 0 00.9-1.5L15 11V3" stroke="#5de4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 16h9" stroke="#5de4ff" stroke-width="1.5" stroke-linecap="round"/></svg>
             <span class="skill-icon-name">JUnit / Testing</span>
@@ -1287,6 +1355,7 @@
           <span class="feature-tag">Maven</span>
           <span class="feature-tag">Swagger / OpenAPI</span>
           <span class="feature-tag">Render</span>
+          <span class="feature-tag">Vercel</span>
           <span class="feature-tag">Figma</span>
           <span class="feature-tag">Linux terminal</span>
           <span class="feature-tag">MySQL</span>
@@ -1296,6 +1365,10 @@
           <span class="feature-tag">Supabase</span>
           <span class="feature-tag">JaCoCo</span>
           <span class="feature-tag">Mockito</span>
+          <span class="feature-tag">Tailwind CSS</span>
+          <span class="feature-tag">Groq API</span>
+          <span class="feature-tag">Bucket4j</span>
+          <span class="feature-tag">Postman</span>
         </div>
       </div>
     </div>
@@ -1507,6 +1580,14 @@ const translations = {
     'track.f4': 'Tema clar / fosc',
     'track.f5': 'Portades automàtiques',
     'track.arch': 'Mode dual: Accés com a convidat (offline) o sincronització Cloud amb compte personal.',
+    'cvanalyzer.short': 'Aplicació web que analitza CVs amb IA i proporciona feedback accionable en l\'idioma del navegador.',
+    'cvanalyzer.desc': 'Sistema full-stack cloud que extreu el text d\'un CV en PDF, el processa amb un model de llenguatge (Groq / Mistral) i retorna una anàlisi estructurada: puntuació, punts forts, febles, millores i keywords ATS que falten. Inclou Job Matching per comparar el CV amb ofertes de feina i historial d\'anàlisis per usuari.',
+    'cvanalyzer.f1': 'Anàlisi per seccions',
+    'cvanalyzer.f2': 'Job Matching',
+    'cvanalyzer.f3': 'Multiidioma (i18n)',
+    'cvanalyzer.f4': 'Rate limiting',
+    'cvanalyzer.f5': 'Auth amb Supabase',
+    'cvanalyzer.arch': 'LLM-powered — Groq · Mistral-7B · Next.js (Vercel) · Spring Boot (Render) · Supabase',
     'about.p1': 'Soc en <strong>Pau Balsach</strong>, estudiant de Cicle Formatiu de Grau Superior en Desenvolupament d\'Aplicacions Multiplataforma (DAM) a l\'Institut Pla de l\'Estany, Banyoles.',
     'about.p2': 'M\'apassiona construir sistemes complets, des del <strong>backend i APIs</strong> fins a interfícies d\'escriptori i aplicacions mòbils. Gaudeixo especialment dels reptes d\'arquitectura distribuïda i de la implementació de mecanismes de seguretat robustos.',
     'about.p3': 'Fora del codi, he participat en un voluntariat per reparar ordinadors per a escoles amb pocs recursos de l\'Àfrica, i he dedicat 4 anys a activitats extraescolars de <strong>programació i robòtica</strong> amb Python.',
@@ -1584,6 +1665,14 @@ const translations = {
     'track.f4': 'Tema claro / oscuro',
     'track.f5': 'Portadas automáticas',
     'track.arch': 'Modo dual: Acceso como invitado (offline) o sincronización Cloud con cuenta personal.',
+    'cvanalyzer.short': 'Aplicación web que analiza CVs con IA y proporciona feedback accionable en el idioma del navegador.',
+    'cvanalyzer.desc': 'Sistema full-stack cloud que extrae el texto de un CV en PDF, lo procesa con un modelo de lenguaje (Groq / Mistral) y devuelve un análisis estructurado: puntuación, puntos fuertes, débiles, mejoras y keywords ATS que faltan. Incluye Job Matching para comparar el CV con ofertas de trabajo e historial de análisis por usuario.',
+    'cvanalyzer.f1': 'Análisis por secciones',
+    'cvanalyzer.f2': 'Job Matching',
+    'cvanalyzer.f3': 'Multiidioma (i18n)',
+    'cvanalyzer.f4': 'Rate limiting',
+    'cvanalyzer.f5': 'Auth con Supabase',
+    'cvanalyzer.arch': 'LLM-powered — Groq · Mistral-7B · Next.js (Vercel) · Spring Boot (Render) · Supabase',
     'about.p1': 'Soy <strong>Pau Balsach</strong>, estudiante de Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM) en el Institut Pla de l\'Estany, Banyoles.',
     'about.p2': 'Me apasiona construir sistemas completos, desde el <strong>backend y APIs</strong> hasta interfaces de escritorio y aplicaciones móviles. Disfruto especialmente de los retos de arquitectura distribuida y de la implementación de mecanismos de seguridad robustos.',
     'about.p3': 'Fuera del código, he participado en un voluntariado para reparar ordenadores para escuelas con pocos recursos de África, y he dedicado 4 años a actividades extraescolares de <strong>programación y robótica</strong> con Python.',
@@ -1661,6 +1750,14 @@ const translations = {
     'track.f4': 'Light / dark theme',
     'track.f5': 'Automatic covers',
     'track.arch': 'Dual mode: Guest access (offline) or Cloud sync with personal account.',
+    'cvanalyzer.short': 'Web app that analyses CVs with AI and provides actionable feedback in the browser\'s language.',
+    'cvanalyzer.desc': 'Full-stack cloud system that extracts text from a PDF CV, processes it with a language model (Groq / Mistral) and returns a structured analysis: score, strengths, weaknesses, improvements and missing ATS keywords. Includes Job Matching to compare the CV against job offers and a per-user analysis history.',
+    'cvanalyzer.f1': 'Section breakdown',
+    'cvanalyzer.f2': 'Job Matching',
+    'cvanalyzer.f3': 'Multilingual (i18n)',
+    'cvanalyzer.f4': 'Rate limiting',
+    'cvanalyzer.f5': 'Auth with Supabase',
+    'cvanalyzer.arch': 'LLM-powered — Groq · Mistral-7B · Next.js (Vercel) · Spring Boot (Render) · Supabase',
     'about.p1': 'I\'m <strong>Pau Balsach</strong>, a student of the Higher Degree in Multiplatform Application Development (DAM) at Institut Pla de l\'Estany, Banyoles.',
     'about.p2': 'I\'m passionate about building complete systems, from <strong>backend and APIs</strong> to desktop interfaces and mobile applications. I especially enjoy distributed architecture challenges and implementing robust security mechanisms.',
     'about.p3': 'Outside of code, I\'ve volunteered to repair computers for under-resourced schools in Africa, and I\'ve spent 4 years in extracurricular <strong>programming and robotics</strong> activities with Python.',
@@ -1706,7 +1803,7 @@ const translations = {
   }
 };
 
-let currentLang = 'ca';
+let currentLang = 'es';
 
 function setLang(lang) {
   currentLang = lang;
@@ -1736,8 +1833,7 @@ function setLang(lang) {
   localStorage.setItem('lang', lang);
 }
 
-// Load saved language on page load
-const savedLang = localStorage.getItem('lang') || 'ca';
+const savedLang = localStorage.getItem('lang') || 'es';
 setLang(savedLang);
 </script>
 </body>
