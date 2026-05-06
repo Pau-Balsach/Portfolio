@@ -576,9 +576,15 @@
 
   /* ABOUT */
   .about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .about-bio {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
     align-items: start;
   }
 
@@ -587,7 +593,6 @@
     font-weight: 300;
     color: rgba(240,237,232,0.7);
     line-height: 1.85;
-    margin-bottom: 1.25rem;
   }
 
   .about-bio p strong {
@@ -595,7 +600,18 @@
     font-weight: 500;
   }
 
-  .about-details { display: flex; flex-direction: column; gap: 2rem; }
+  .about-details {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-details-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
   .detail-group {}
 
@@ -612,9 +628,19 @@
 
   .skill-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 0.6rem;
     margin-top: 0.75rem;
+  }
+
+  @media (max-width: 1100px) {
+    .skill-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  @media (max-width: 900px) {
+    .about-bio { grid-template-columns: 1fr; }
+    .about-details { grid-template-columns: 1fr; }
+    .skill-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
   .skill-icon-item {
@@ -1331,44 +1357,65 @@
             <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#F34F29" d="M124.737 58.378L69.621 3.264c-3.172-3.174-8.32-3.174-11.497 0L46.68 14.71l14.518 14.518c3.375-1.139 7.243-.375 9.932 2.314 2.703 2.706 3.461 6.607 2.294 9.993l13.992 13.993c3.385-1.167 7.292-.413 9.994 2.295 3.78 3.777 3.78 9.9 0 13.679a9.667 9.667 0 01-13.683 0 9.716 9.716 0 01-2.105-10.521L68.574 47.933l-.002 34.341a9.708 9.708 0 012.559 1.828c3.778 3.777 3.778 9.898 0 13.683-3.779 3.777-9.904 3.777-13.679 0-3.778-3.785-3.778-9.906 0-13.683a9.65 9.65 0 013.167-2.11V47.333a9.581 9.581 0 01-3.167-2.111c-2.862-2.86-3.551-7.06-2.083-10.576L40.836 20.333 3.263 57.906c-3.172 3.175-3.172 8.32 0 11.497l55.115 55.114c3.174 3.174 8.32 3.174 11.499 0l54.86-54.861c3.175-3.176 3.175-8.323 0-11.278z"/></svg>
             <span class="skill-icon-name">Git / GitHub</span>
           </div>
+          <!-- JavaFX -->
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><rect x="2" y="3" width="20" height="16" rx="2" stroke="#f08300" stroke-width="1.5"/><path d="M2 7h20" stroke="#f08300" stroke-width="1" opacity="0.5"/><path d="M7 12h10M9 15h6" stroke="#f08300" stroke-width="1.5" stroke-linecap="round"/><path d="M10 21h4" stroke="#f08300" stroke-width="1.5" stroke-linecap="round"/><path d="M12 19v2" stroke="#f08300" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="skill-icon-name">JavaFX</span>
+          </div>
+          <!-- Hibernate / JPA -->
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 7c0-1.657 3.582-3 8-3s8 1.343 8 3v10c0 1.657-3.582 3-8 3s-8-1.343-8-3V7z" stroke="#59666c" stroke-width="1.5"/><path d="M4 7c0 1.657 3.582 3 8 3s8-1.343 8-3" stroke="#59666c" stroke-width="1.5"/><path d="M4 12c0 1.657 3.582 3 8 3s8-1.343 8-3" stroke="#59666c" stroke-width="1" opacity="0.5"/></svg>
+            <span class="skill-icon-name">Hibernate / JPA</span>
+          </div>
+          <!-- GitHub Actions -->
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="12" cy="12" r="3" stroke="#7fff6e" stroke-width="1.5"/><path d="M12 5V3M12 21v-2M5 12H3M21 12h-2" stroke="#7fff6e" stroke-width="1.5" stroke-linecap="round"/><path d="M7.05 7.05L5.636 5.636M18.364 18.364l-1.414-1.414M7.05 16.95l-1.414 1.414M18.364 5.636l-1.414 1.414" stroke="#7fff6e" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="skill-icon-name">GitHub Actions</span>
+          </div>
         </div>
       </div>
 
-      <div class="detail-group">
-        <div class="detail-group-title" data-i18n="about.languages">Idiomes</div>
-        <div class="lang-list">
-          <div class="lang-item"><span class="lang-name" data-i18n="about.lang1">Català</span><span class="lang-level" data-i18n="about.native">Natiu</span></div>
-          <div class="lang-item"><span class="lang-name" data-i18n="about.lang2">Castellà</span><span class="lang-level" data-i18n="about.native">Natiu</span></div>
-          <div class="lang-item"><span class="lang-name" data-i18n="about.lang3">Anglès</span><span class="lang-level" data-i18n="about.b2">B2 — Intermedi-alt</span></div>
+      <div class="about-details-right">
+        <div class="detail-group">
+          <div class="detail-group-title" data-i18n="about.languages">Idiomes</div>
+          <div class="lang-list">
+            <div class="lang-item"><span class="lang-name" data-i18n="about.lang1">Català</span><span class="lang-level" data-i18n="about.native">Natiu</span></div>
+            <div class="lang-item"><span class="lang-name" data-i18n="about.lang2">Castellà</span><span class="lang-level" data-i18n="about.native">Natiu</span></div>
+            <div class="lang-item"><span class="lang-name" data-i18n="about.lang3">Anglès</span><span class="lang-level" data-i18n="about.b2">B2 — Intermedi-alt</span></div>
+          </div>
         </div>
-      </div>
 
-      <div class="detail-group">
-        <div class="detail-group-title" data-i18n="about.tools">Eines i plataformes</div>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;">
-          <span class="feature-tag">Git / GitHub</span>
-          <span class="feature-tag">GitHub Actions</span>
-          <span class="feature-tag">IntelliJ IDEA</span>
-          <span class="feature-tag">VS Code</span>
-          <span class="feature-tag">Apache NetBeans</span>
-          <span class="feature-tag">Docker</span>
-          <span class="feature-tag">Maven</span>
-          <span class="feature-tag">Swagger / OpenAPI</span>
-          <span class="feature-tag">Render</span>
-          <span class="feature-tag">Vercel</span>
-          <span class="feature-tag">Figma</span>
-          <span class="feature-tag">Linux terminal</span>
-          <span class="feature-tag">MySQL</span>
-          <span class="feature-tag">SQLite</span>
-          <span class="feature-tag">PostgreSQL</span>
-          <span class="feature-tag">Firebase</span>
-          <span class="feature-tag">Supabase</span>
-          <span class="feature-tag">JaCoCo</span>
-          <span class="feature-tag">Mockito</span>
-          <span class="feature-tag">Tailwind CSS</span>
-          <span class="feature-tag">Groq API</span>
-          <span class="feature-tag">Bucket4j</span>
-          <span class="feature-tag">Postman</span>
+        <div class="detail-group">
+          <div class="detail-group-title" data-i18n="about.tools">Eines i plataformes</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;">
+            <span class="feature-tag">Git / GitHub</span>
+            <span class="feature-tag">GitHub Actions</span>
+            <span class="feature-tag">IntelliJ IDEA</span>
+            <span class="feature-tag">VS Code</span>
+            <span class="feature-tag">Apache NetBeans</span>
+            <span class="feature-tag">Docker</span>
+            <span class="feature-tag">Maven</span>
+            <span class="feature-tag">Swagger / OpenAPI</span>
+            <span class="feature-tag">Render</span>
+            <span class="feature-tag">Vercel</span>
+            <span class="feature-tag">Netlify</span>
+            <span class="feature-tag">Figma</span>
+            <span class="feature-tag">Linux terminal</span>
+            <span class="feature-tag">MySQL</span>
+            <span class="feature-tag">SQLite</span>
+            <span class="feature-tag">PostgreSQL</span>
+            <span class="feature-tag">Firebase</span>
+            <span class="feature-tag">Supabase</span>
+            <span class="feature-tag">JaCoCo</span>
+            <span class="feature-tag">Mockito</span>
+            <span class="feature-tag">Tailwind CSS</span>
+            <span class="feature-tag">Groq API</span>
+            <span class="feature-tag">Bucket4j</span>
+            <span class="feature-tag">Postman</span>
+            <span class="feature-tag">Apache PDFBox</span>
+            <span class="feature-tag">Nominatim</span>
+            <span class="feature-tag">jpackage</span>
+          </div>
         </div>
       </div>
     </div>
