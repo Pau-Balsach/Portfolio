@@ -484,6 +484,8 @@
   .tech-badge.springboot { background: rgba(109,179,63,0.15); color: #6db33f; }
   .tech-badge.groq { background: rgba(255,107,107,0.12); color: #ff8c8c; }
   .tech-badge.vercel { background: rgba(255,255,255,0.06); color: #ccc; }
+  .tech-badge.tech-badge-react { background: rgba(97,218,251,0.12); color: #61dafb; }
+  .tech-badge.tech-badge-selenium { background: rgba(0,190,90,0.12); color: #00be5a; }
 
   .project-links {
     display: flex;
@@ -1051,11 +1053,11 @@
 
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-number">4+</div>
+      <div class="stat-number">5+</div>
       <div class="stat-label" data-i18n="stats.projects">Full projects</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">11+</div>
+      <div class="stat-number">14+</div>
       <div class="stat-label" data-i18n="stats.repos">Repos públics</div>
     </div>
     <div class="stat-item">
@@ -1073,6 +1075,11 @@
     <span class="section-num">01</span>
     <h2 class="section-title" data-i18n="sections.projects">Projectes</h2>
   </div>
+
+  <p style="margin-top: -2.5rem; margin-bottom: 2.5rem; font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0; color: var(--accent);"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    <span data-i18n="projects.demo_note">Tots els projectes inclouen una demo als seus repositoris de GitHub.</span>
+  </p>
 
   <div class="projects-grid">
 
@@ -1275,6 +1282,66 @@
         </div>
       </div>
     </div>
+
+    <!-- RentAPI (posición 05) -->
+    <div class="project-card reveal" style="margin-bottom: 1.5rem; margin-top: 1.5rem;">
+      <div class="project-main">
+        <div class="project-header">
+          <div class="project-icon green">🏠</div>
+          <h3 class="project-name">RentAPI</h3>
+        </div>
+        <p class="project-short" data-i18n="rentapi.short">Ecosistema complet de dades de lloguer: scraper, API REST pública i frontend interactiu.</p>
+        <p class="project-desc" data-i18n="rentapi.desc">
+          Ecosistema de tres repositoris que extreu anuncis de lloguer d'Habitaclia, Idealista i Fotocasa, els normalitza i els exposa com a API REST pública amb estadístiques de mercat per ciutat i barri. El frontend visualitza les dades en un mapa interactiu amb clustering per zoom i un ranking de preus actualitzat.
+        </p>
+        <div class="project-features">
+          <span class="feature-tag" data-i18n="rentapi.f1">API pública + Swagger</span>
+          <span class="feature-tag" data-i18n="rentapi.f2">Mapa interactiu (Leaflet)</span>
+          <span class="feature-tag" data-i18n="rentapi.f3">Scraper multi-portal</span>
+          <span class="feature-tag" data-i18n="rentapi.f4">Stats per barri / ciutat</span>
+          <span class="feature-tag" data-i18n="rentapi.f5">Rate limiting + Auth API Key</span>
+          <span class="feature-tag" data-i18n="rentapi.f6">CI/CD GitHub Actions</span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-badge java">Java</span>
+          <span class="tech-badge springboot">Spring Boot</span>
+          <span class="tech-badge tech-badge-react">React / Vite</span>
+          <span class="tech-badge supabase">Supabase</span>
+          <span class="tech-badge postgres">PostgreSQL</span>
+          <span class="tech-badge docker">Docker</span>
+          <span class="tech-badge vercel">Vercel</span>
+          <span class="tech-badge swagger">Swagger</span>
+          <span class="tech-badge tech-badge-selenium">Selenium</span>
+        </div>
+        <div class="arch-banner">
+          <div class="arch-dot"></div>
+          <span class="arch-banner-label" data-i18n="rentapi.arch">3-repo ecosystem — Scraper (Java) · API REST (Spring Boot) · Frontend (React/Leaflet)</span>
+        </div>
+        <div class="project-video-wrap">
+          <video src="videos/rentapi-demo.mp4" controls muted loop playsinline
+            onerror="this.parentElement.innerHTML='<div class=\'video-placeholder\'><div class=\'video-placeholder-icon\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><polygon points=\'5 3 19 12 5 21 5 3\'/></svg></div><div class=\'video-placeholder-text\'>Demo video</div><div class=\'video-placeholder-sub\'>rentapi-demo.mp4</div></div>'">
+          </video>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-number">05</div>
+        <div class="project-repo-links">
+          <a href="https://github.com/Pau-Balsach/rentapi-scrapper" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Scraper (Java)
+          </a>
+          <a href="https://github.com/Pau-Balsach/rentapi" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            API (Spring Boot)
+          </a>
+          <a href="https://github.com/Pau-Balsach/rentapi-web" target="_blank" rel="noopener" class="repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Frontend (React)
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1372,6 +1439,16 @@
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="12" cy="12" r="3" stroke="#7fff6e" stroke-width="1.5"/><path d="M12 5V3M12 21v-2M5 12H3M21 12h-2" stroke="#7fff6e" stroke-width="1.5" stroke-linecap="round"/><path d="M7.05 7.05L5.636 5.636M18.364 18.364l-1.414-1.414M7.05 16.95l-1.414 1.414M18.364 5.636l-1.414 1.414" stroke="#7fff6e" stroke-width="1.5" stroke-linecap="round"/></svg>
             <span class="skill-icon-name">GitHub Actions</span>
           </div>
+          <!-- Selenium -->
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="12" cy="12" r="9" stroke="#00be5a" stroke-width="1.5"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4" stroke="#00be5a" stroke-width="1.5" stroke-linecap="round"/><path d="M12 8V6M12 18v-2" stroke="#00be5a" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.5" fill="#00be5a"/></svg>
+            <span class="skill-icon-name">Selenium</span>
+          </div>
+          <!-- DevOps / CI-CD -->
+          <div class="skill-icon-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12" stroke="#5de4ff" stroke-width="1.5" stroke-linecap="round"/><path d="M12 21c4.97 0 9-4.03 9-9" stroke="#5de4ff" stroke-width="1.5" stroke-linecap="round"/><path d="M3 12c0 2.39.93 4.56 2.44 6.17" stroke="#5de4ff" stroke-width="1" stroke-linecap="round" opacity="0.5"/><path d="M18.56 5.83C16.95 4.32 14.78 3.39 12.39 3.39" stroke="#5de4ff" stroke-width="1" stroke-linecap="round" opacity="0.5"/><path d="M9 3l3-2 2 3M15 21l-3 2-2-3" stroke="#5de4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="skill-icon-name">DevOps / CI·CD</span>
+          </div>
         </div>
       </div>
 
@@ -1415,6 +1492,10 @@
             <span class="feature-tag">Apache PDFBox</span>
             <span class="feature-tag">Nominatim</span>
             <span class="feature-tag">jpackage</span>
+            <span class="feature-tag">Selenium</span>
+            <span class="feature-tag">Jsoup</span>
+            <span class="feature-tag">Leaflet</span>
+            <span class="feature-tag">Zustand</span>
           </div>
         </div>
       </div>
@@ -1607,6 +1688,7 @@ const translations = {
     'sections.projects': 'Projectes',
     'sections.about': 'Sobre mi',
     'sections.experience': 'Experiència',
+    'projects.demo_note': 'Tots els projectes inclouen una demo als seus repositoris de GitHub.',
     'apptaxis.short': 'Plataforma de gestió de flotes amb arquitectura distribuïda (desktop, mobile i API).',
     'apptaxis.desc': 'Sistema complet per a la gestió de flotes de taxi que centralitza l\'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l\'assignació de serveis i el control d\'activitat.',
     'apptaxis.f1': 'Calendari interactiu',
@@ -1635,6 +1717,15 @@ const translations = {
     'cvanalyzer.f4': 'Rate limiting',
     'cvanalyzer.f5': 'Auth amb Supabase',
     'cvanalyzer.arch': 'LLM-powered — Groq · Mistral-7B · Next.js (Vercel) · Spring Boot (Render) · Supabase',
+    'rentapi.short': 'Ecosistema complet de dades de lloguer: scraper, API REST pública i frontend interactiu.',
+    'rentapi.desc': 'Ecosistema de tres repositoris que extreu anuncis de lloguer d\'Habitaclia, Idealista i Fotocasa, els normalitza i els exposa com a API REST pública amb estadístiques de mercat per ciutat i barri. El frontend visualitza les dades en un mapa interactiu amb clustering per zoom i un ranking de preus actualitzat.',
+    'rentapi.f1': 'API pública + Swagger',
+    'rentapi.f2': 'Mapa interactiu (Leaflet)',
+    'rentapi.f3': 'Scraper multi-portal',
+    'rentapi.f4': 'Stats per barri / ciutat',
+    'rentapi.f5': 'Rate limiting + Auth API Key',
+    'rentapi.f6': 'CI/CD GitHub Actions',
+    'rentapi.arch': 'Ecosistema 3 repos — Scraper (Java) · API REST (Spring Boot) · Frontend (React/Leaflet)',
     'about.p1': 'Soc en <strong>Pau Balsach</strong>, estudiant de Cicle Formatiu de Grau Superior en Desenvolupament d\'Aplicacions Multiplataforma (DAM) a l\'Institut Pla de l\'Estany, Banyoles.',
     'about.p2': 'M\'apassiona construir sistemes complets, des del <strong>backend i APIs</strong> fins a interfícies d\'escriptori i aplicacions mòbils. Gaudeixo especialment dels reptes d\'arquitectura distribuïda i de la implementació de mecanismes de seguretat robustos.',
     'about.p3': 'Fora del codi, he participat en un voluntariat per reparar ordinadors per a escoles amb pocs recursos de l\'Àfrica, i he dedicat 4 anys a activitats extraescolars de <strong>programació i robòtica</strong> amb Python.',
@@ -1692,6 +1783,7 @@ const translations = {
     'sections.projects': 'Proyectos',
     'sections.about': 'Sobre mí',
     'sections.experience': 'Experiencia',
+    'projects.demo_note': 'Todos los proyectos incluyen una demo en sus repositorios de GitHub.',
     'apptaxis.short': 'Plataforma de gestión de flotas con arquitectura distribuida (desktop, mobile y API).',
     'apptaxis.desc': 'Sistema completo para la gestión de flotas de taxi que centraliza la administración de conductores, servicios y planificación operativa diaria. Permite visualizar y organizar la logística mediante un calendario interactivo, facilitando la asignación de servicios y el control de actividad.',
     'apptaxis.f1': 'Calendario interactivo',
@@ -1720,6 +1812,15 @@ const translations = {
     'cvanalyzer.f4': 'Rate limiting',
     'cvanalyzer.f5': 'Auth con Supabase',
     'cvanalyzer.arch': 'LLM-powered — Groq · Mistral-7B · Next.js (Vercel) · Spring Boot (Render) · Supabase',
+    'rentapi.short': 'Ecosistema completo de datos de alquiler: scraper, API REST pública y frontend interactivo.',
+    'rentapi.desc': 'Ecosistema de tres repositorios que extrae anuncios de alquiler de Habitaclia, Idealista y Fotocasa, los normaliza y los expone como API REST pública con estadísticas de mercado por ciudad y barrio. El frontend visualiza los datos en un mapa interactivo con clustering por zoom y un ranking de precios actualizado.',
+    'rentapi.f1': 'API pública + Swagger',
+    'rentapi.f2': 'Mapa interactivo (Leaflet)',
+    'rentapi.f3': 'Scraper multi-portal',
+    'rentapi.f4': 'Stats por barrio / ciudad',
+    'rentapi.f5': 'Rate limiting + Auth API Key',
+    'rentapi.f6': 'CI/CD GitHub Actions',
+    'rentapi.arch': 'Ecosistema 3 repos — Scraper (Java) · API REST (Spring Boot) · Frontend (React/Leaflet)',
     'about.p1': 'Soy <strong>Pau Balsach</strong>, estudiante de Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM) en el Institut Pla de l\'Estany, Banyoles.',
     'about.p2': 'Me apasiona construir sistemas completos, desde el <strong>backend y APIs</strong> hasta interfaces de escritorio y aplicaciones móviles. Disfruto especialmente de los retos de arquitectura distribuida y de la implementación de mecanismos de seguridad robustos.',
     'about.p3': 'Fuera del código, he participado en un voluntariado para reparar ordenadores para escuelas con pocos recursos de África, y he dedicado 4 años a actividades extraescolares de <strong>programación y robótica</strong> con Python.',
@@ -1777,6 +1878,7 @@ const translations = {
     'sections.projects': 'Projects',
     'sections.about': 'About me',
     'sections.experience': 'Experience',
+    'projects.demo_note': 'All projects include a demo in their GitHub repositories.',
     'apptaxis.short': 'Fleet management platform with distributed architecture (desktop, mobile and API).',
     'apptaxis.desc': 'Complete system for taxi fleet management that centralises driver administration, services and daily operational planning. It allows visualising and organising logistics through an interactive calendar, facilitating service assignment and activity tracking.',
     'apptaxis.f1': 'Interactive calendar',
@@ -1805,6 +1907,15 @@ const translations = {
     'cvanalyzer.f4': 'Rate limiting',
     'cvanalyzer.f5': 'Auth with Supabase',
     'cvanalyzer.arch': 'LLM-powered — Groq · Mistral-7B · Next.js (Vercel) · Spring Boot (Render) · Supabase',
+    'rentapi.short': 'Complete rental data ecosystem: scraper, public REST API and interactive frontend.',
+    'rentapi.desc': 'Three-repository ecosystem that extracts rental listings from Habitaclia, Idealista and Fotocasa, normalises them and exposes them as a public REST API with market statistics per city and neighbourhood. The frontend visualises the data on an interactive map with zoom-based clustering and an up-to-date price ranking.',
+    'rentapi.f1': 'Public API + Swagger',
+    'rentapi.f2': 'Interactive map (Leaflet)',
+    'rentapi.f3': 'Multi-portal scraper',
+    'rentapi.f4': 'Stats by neighbourhood / city',
+    'rentapi.f5': 'Rate limiting + API Key auth',
+    'rentapi.f6': 'CI/CD GitHub Actions',
+    'rentapi.arch': '3-repo ecosystem — Scraper (Java) · REST API (Spring Boot) · Frontend (React/Leaflet)',
     'about.p1': 'I\'m <strong>Pau Balsach</strong>, a student of the Higher Degree in Multiplatform Application Development (DAM) at Institut Pla de l\'Estany, Banyoles.',
     'about.p2': 'I\'m passionate about building complete systems, from <strong>backend and APIs</strong> to desktop interfaces and mobile applications. I especially enjoy distributed architecture challenges and implementing robust security mechanisms.',
     'about.p3': 'Outside of code, I\'ve volunteered to repair computers for under-resourced schools in Africa, and I\'ve spent 4 years in extracurricular <strong>programming and robotics</strong> activities with Python.',
