@@ -14,6 +14,8 @@ mi-portfolio/
 └── videos/
     ├── apptaxis-demo.mp4
     ├── gestor-demo.mp4
+    ├── rentapi-demo.mp4
+    ├── cvanalyzer-demo.mp4
     └── tracklectura-demo.mp4
 ```
 
