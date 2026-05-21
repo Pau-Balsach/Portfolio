@@ -1182,11 +1182,11 @@
 
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-number">5+</div>
+      <div class="stat-number">6+</div>
       <div class="stat-label" data-i18n="stats.projects">Full projects</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">14+</div>
+      <div class="stat-number">16+</div>
       <div class="stat-label" data-i18n="stats.repos">Repos públics</div>
     </div>
     <div class="stat-item">
@@ -1206,8 +1206,8 @@
   </div>
 
   <p style="margin-top: -2.5rem; margin-bottom: 2.5rem; font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem;">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0; color: var(--accent);"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-    <span data-i18n="projects.demo_note">Tots els projectes inclouen una demo als seus repositoris de GitHub.</span>
+    <span style="width:8px;height:8px;border-radius:50%;background:#7fff6e;flex-shrink:0;display:inline-block;box-shadow:0 0 6px #7fff6e88;"></span>
+    <span data-i18n="projects.demo_note">Totes les APIs i webs públiques d\'aquest portfolio estan monitoritzades en temps real per <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma d\'observabilitat SaaS que he desenvolupat jo mateix.<br>Detecta caigudes automàticament, registra mètriques de latència, comprova certificats SSL i envia alertes per email.',    'apptaxis.desc': 'Sistema complet per a la gestió de flotes de taxi que centralitza l\'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l\'assignació de serveis i el control d\'activitat.</span>
   </p>
 
   <div class="projects-grid">
@@ -1676,7 +1676,19 @@
               <span class="comp-tag">jpackage</span>
             </div>
           </div>
-
+        <div class="comp-card comp-accent-green">
+          <div class="comp-icon-wrap comp-icon-green">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 20h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 12l4-4 4 4 4-7 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="comp-name">Observabilitat</div>
+          <div class="comp-tags">
+            <span class="comp-tag">WebSockets</span>
+            <span class="comp-tag">STOMP</span>
+            <span class="comp-tag">SSL Checks</span>
+            <span class="comp-tag">Uptime monitoring</span>
+            <span class="comp-tag">SMTP alerts</span>
+          </div>
+        </div>
         </div>
       </div>
 
@@ -1869,9 +1881,7 @@ const translations = {
     'sections.projects': 'Projectes',
     'sections.about': 'Sobre mi',
     'sections.experience': 'Experiència',
-    'projects.demo_note': 'Tots els projectes inclouen una demo als seus repositoris de GitHub.',
-    'apptaxis.short': 'Plataforma de gestió de flotes amb arquitectura distribuïda (desktop, mobile i API).',
-    'apptaxis.desc': 'Sistema complet per a la gestió de flotes de taxi que centralitza l\'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l\'assignació de serveis i el control d\'activitat.',
+    'projects.demo_note': 'Totes les APIs i webs públiques d\'aquest portfolio estan monitoritzades en temps real per <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma d\'observabilitat SaaS que he desenvolupat jo mateix.<br>Detecta caigudes automàticament, registra mètriques de latència, comprova certificats SSL i envia alertes per email.',    'apptaxis.desc': 'Sistema complet per a la gestió de flotes de taxi que centralitza l\'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l\'assignació de serveis i el control d\'activitat.',
     'apptaxis.f1': 'Calendari interactiu',
     'apptaxis.f2': 'Gestió de conductors',
     'apptaxis.f3': 'API documentada',
@@ -1967,9 +1977,7 @@ const translations = {
     'sections.projects': 'Proyectos',
     'sections.about': 'Sobre mí',
     'sections.experience': 'Experiencia',
-    'projects.demo_note': 'Todos los proyectos incluyen una demo en sus repositorios de GitHub.',
-    'apptaxis.short': 'Plataforma de gestión de flotas con arquitectura distribuida (desktop, mobile y API).',
-    'apptaxis.desc': 'Sistema completo para la gestión de flotas de taxi que centraliza la administración de conductores, servicios y planificación operativa diaria. Permite visualizar y organizar la logística mediante un calendario interactivo, facilitando la asignación de servicios y el control de actividad.',
+    'projects.demo_note': 'Todas las APIs y webs públicas de este portfolio están monitorizadas en tiempo real por <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma de observabilidad SaaS que he desarrollado yo mismo.<br>Detecta caídas automáticamente, registra métricas de latencia, comprueba certificados SSL y envía alertas por email.',    'apptaxis.desc': 'Sistema completo para la gestión de flotas de taxi que centraliza la administración de conductores, servicios y planificación operativa diaria. Permite visualizar y organizar la logística mediante un calendario interactivo, facilitando la asignación de servicios y el control de actividad.',
     'apptaxis.f1': 'Calendario interactivo',
     'apptaxis.f2': 'Gestión de conductores',
     'apptaxis.f3': 'API documentada',
@@ -2065,9 +2073,7 @@ const translations = {
     'sections.projects': 'Projects',
     'sections.about': 'About me',
     'sections.experience': 'Experience',
-    'projects.demo_note': 'All projects include a demo in their GitHub repositories.',
-    'apptaxis.short': 'Fleet management platform with distributed architecture (desktop, mobile and API).',
-    'apptaxis.desc': 'Complete system for taxi fleet management that centralises driver administration, services and daily operational planning. It allows visualising and organising logistics through an interactive calendar, facilitating service assignment and activity tracking.',
+    'projects.demo_note': 'All public APIs and websites in this portfolio are monitored in real time by <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, an observability SaaS platform I built myself.<br>It automatically detects outages, tracks latency metrics, checks SSL certificates and sends email alerts.',    'apptaxis.desc': 'Complete system for taxi fleet management that centralises driver administration, services and daily operational planning. It allows visualising and organising logistics through an interactive calendar, facilitating service assignment and activity tracking.',
     'apptaxis.f1': 'Interactive calendar',
     'apptaxis.f2': 'Driver management',
     'apptaxis.f3': 'Documented API',
@@ -2151,7 +2157,7 @@ const translations = {
   }
 };
 
-let currentLang = 'es';
+let currentLang = 'ca';
 
 function setLang(lang) {
   currentLang = lang;
@@ -2181,7 +2187,7 @@ function setLang(lang) {
   localStorage.setItem('lang', lang);
 }
 
-const savedLang = localStorage.getItem('lang') || 'es';
+const savedLang = localStorage.getItem('lang') || 'ca';
 setLang(savedLang);
 </script>
 </body>
