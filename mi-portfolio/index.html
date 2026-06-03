@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1207,7 +1207,7 @@
 
   <p style="margin-top: -2.5rem; margin-bottom: 2.5rem; font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem;">
     <span style="width:8px;height:8px;border-radius:50%;background:#7fff6e;flex-shrink:0;display:inline-block;box-shadow:0 0 6px #7fff6e88;"></span>
-    <span data-i18n="projects.demo_note">Totes les APIs i webs públiques d\'aquest portfolio estan monitoritzades en temps real per <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma d\'observabilitat SaaS que he desenvolupat jo mateix.<br>Detecta caigudes automàticament, registra mètriques de latència, comprova certificats SSL i envia alertes per email.',    'apptaxis.desc': 'Sistema complet per a la gestió de flotes de taxi que centralitza l\'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l\'assignació de serveis i el control d\'activitat.</span>
+    <span data-i18n="projects.demo_note"></span>
   </p>
 
   <div class="projects-grid">
@@ -1286,12 +1286,12 @@
           Aplicació d'escriptori enfocada en la gestió segura de credencials, implementant xifratge avançat i control d'accés basat en autenticació forta. La contrasenya mestra mai s'emmagatzema: es deriva amb PBKDF2 i s'usa localment.
         </p>
         <div class="project-features">
-          <span class="feature-tag">Xifratge AES-256</span>
-          <span class="feature-tag">PBKDF2 Key Derivation</span>
-          <span class="feature-tag">Row Level Security</span>
+          <span class="feature-tag" data-i18n="gestor.f3">Xifratge AES-256</span>
+          <span class="feature-tag" data-i18n="gestor.f4">PBKDF2 Key Derivation</span>
+          <span class="feature-tag" data-i18n="gestor.f5">Row Level Security</span>
           <span class="feature-tag" data-i18n="gestor.f1">Recuperació per email</span>
           <span class="feature-tag" data-i18n="gestor.f2">Organització per categories</span>
-          <span class="feature-tag">API Riot Games</span>
+          <span class="feature-tag" data-i18n="gestor.f6">API Riot Games</span>
         </div>
         <div class="tech-stack">
           <span class="tech-badge java">Java</span>
@@ -1329,7 +1329,7 @@
           <div class="project-icon blue">🤖</div>
           <h3 class="project-name">AI CV Analyzer</h3>
         </div>
-        <p class="project-short" data-i18n="cvanalyzer.short">Analizador de CVs con IA (Groq/Mistral) que genera feedback estructurado y se adapta al idioma del navegador.</p>
+        <p class="project-short" data-i18n="cvanalyzer.short">Aplicació web que analitza CVs amb IA i proporciona feedback accionable en l'idioma del navegador.</p>
         <p class="project-desc" data-i18n="cvanalyzer.desc">
           Sistema full-stack cloud que procesa CVs en PDF con Groq y Mistral-7B, devolviendo análisis estructurado con puntuación, puntos fuertes, mejoras y keywords ATS. Incluye Job Matching contra ofertas de trabajo y soporte multiidioma automático según el navegador del usuario.        </p>
         <div class="project-features">
@@ -1397,7 +1397,7 @@
         </div>
         <div class="arch-banner" style="border-color: rgba(93,228,255,0.2); background: rgba(93,228,255,0.04);">
           <div class="arch-dot" style="background: #5de4ff;"></div>
-          <span class="arch-banner-label" style="color: #5de4ff;" data-i18n="track.arch">Modo dual: Acceso como invitado (offline) o sincronización Cloud con cuenta personal.</span>
+          <span class="arch-banner-label" style="color: #5de4ff;" data-i18n="track.arch">Mode dual: Accés com a convidat (offline) o sincronització Cloud amb compte personal.</span>
         </div>
           <div class="project-video-wrap">
                 <video src="videos/tracklectura-demo.mp4" controls muted loop playsinline></video> 
@@ -1450,7 +1450,7 @@
         </div>
         <div class="arch-banner">
           <div class="arch-dot"></div>
-          <span class="arch-banner-label" data-i18n="rentapi.arch">3-repo ecosystem — Scraper (Java) · API REST (Spring Boot) · Frontend (React/Leaflet)</span>
+          <span class="arch-banner-label" data-i18n="rentapi.arch">Ecosistema 3 repos — Scraper (Java) · API REST (Spring Boot) · Frontend (React/Leaflet)</span>
         </div>
         <div class="project-video-wrap">
           <video src="videos/rentapi-demo.mp4" controls muted loop playsinline
@@ -1564,7 +1564,7 @@
             <div class="comp-icon-wrap comp-icon-orange">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="6" rx="9" ry="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 6v4c0 1.657 4.03 3 9 3s9-1.343 9-3V6" stroke="currentColor" stroke-width="1.5"/><path d="M3 10v4c0 1.657 4.03 3 9 3s9-1.343 9-3v-4" stroke="currentColor" stroke-width="1.5"/><path d="M3 14v4c0 1.657 4.03 3 9 3s9-1.343 9-3v-4" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <div class="comp-name">Bases de dades</div>
+            <div class="comp-name" data-i18n="skills.databases">Bases de dades</div>
             <div class="comp-tags">
               <span class="comp-tag">PostgreSQL</span>
               <span class="comp-tag">MySQL</span>
@@ -1631,7 +1631,7 @@
             <div class="comp-name">Python</div>
             <div class="comp-tags">
               <span class="comp-tag">Scripts</span>
-              <span class="comp-tag">Robòtica</span>
+              <span class="comp-tag" data-i18n="skills.robotics">Robòtica</span>
               <span class="comp-tag">Odoo</span>
             </div>
           </div>
@@ -1651,7 +1651,7 @@
             <div class="comp-icon-wrap comp-icon-gray">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <div class="comp-name">Others</div>
+            <div class="comp-name" data-i18n="skills.others">Altres</div>
             <div class="comp-tags">
               <span class="comp-tag">IntelliJ IDEA</span>
               <span class="comp-tag">VS Code</span>
@@ -1665,7 +1665,7 @@
           <div class="comp-icon-wrap comp-icon-green">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 20h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 12l4-4 4 4 4-7 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="comp-name">Observabilitat</div>
+          <div class="comp-name" data-i18n="skills.observability">Observabilitat</div>
           <div class="comp-tags">
             <span class="comp-tag">WebSockets</span>
             <span class="comp-tag">STOMP</span>
@@ -1865,7 +1865,7 @@ const translations = {
     'sections.projects': 'Projectes',
     'sections.about': 'Sobre mi',
     'sections.experience': 'Experiència',
-    'projects.demo_note': 'Totes les APIs i webs públiques d\'aquest portfolio estan monitoritzades en temps real per <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma d\'observabilitat SaaS que he desenvolupat jo mateix.<br>Detecta caigudes automàticament, registra mètriques de latència, comprova certificats SSL i envia alertes per email.',    'apptaxis.desc': 'Sistema complet per a la gestió de flotes de taxi que centralitza l\'administració de conductors, serveis i planificació operativa diària. Permet visualitzar i organitzar la logística mitjançant un calendari interactiu, facilitant l\'assignació de serveis i el control d\'activitat.',
+    'projects.demo_note': 'Totes les APIs i webs públiques d\'aquest portfolio estan monitoritzades en temps real per <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma d\'observabilitat SaaS que he desenvolupat jo mateix.<br>Detecta caigudes automàticament, registra mètriques de latència, comprova certificats SSL i envia alertes per email.',
     'apptaxis.f1': 'Calendari interactiu',
     'apptaxis.f2': 'Gestió de conductors',
     'apptaxis.f3': 'API documentada',
@@ -1879,6 +1879,10 @@ const translations = {
     'gestor.desc': 'Aplicació d\'escriptori enfocada en la gestió segura de credencials, implementant xifratge avançat i control d\'accés basat en autenticació forta. La contrasenya mestra mai s\'emmagatzema: es deriva amb PBKDF2 i s\'usa localment.',
     'gestor.f1': 'Recuperació per email',
     'gestor.f2': 'Organització per categories',
+    'gestor.f3': 'Xifratge AES-256',
+    'gestor.f4': 'Derivació de clau PBKDF2',
+    'gestor.f5': 'Seguretat a nivell de fila',
+    'gestor.f6': 'API Riot Games',
     'track.short': 'Eina d\'anàlisi d\'hàbits de lectura amb sincronització cloud i suport offline.',
     'track.desc': 'Aplicació d\'escriptori per al seguiment i anàlisi d\'hàbits de lectura. Permet registrar sessions, mesurar rendiment i visualitzar estadístiques detallades per llibre, amb sincronització automàtica al núvol i mode offline complet.',
     'track.f1': 'Estadístiques per llibre',
@@ -1915,8 +1919,12 @@ const translations = {
     'about.native': 'Natiu',
     'about.b2': 'B2 — Intermedi-alt',
     'about.tools': 'Eines i plataformes',
+    'skills.others': 'Altres',
+    'skills.observability': 'Observabilitat',
+    'skills.robotics': 'Robòtica',
+    'skills.databases': 'Bases de dades',
     'exp.date1': 'Jul 2025<br>Nov 2025',
-    'exp.date2': 'Nov 2024<br>Mai 2025',
+    'exp.date2': 'Nov 2024<br>Maig 2025',
     'exp.date3': 'Actualitat',
     'exp.role1': 'Tècnic informàtic',
     'exp.company1': 'LLAGOS 2005, S.L. — Botiga d\'informàtica',
@@ -1933,7 +1941,7 @@ const translations = {
     'exp.tag2c': 'Instal·lació de programari',
     'exp.role3': 'DAM — Grau Superior',
     'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
-    'exp.desc3': 'Cicle Formatiu de Grau Superior en Desenvolupament d\'Aplicacions Multiplataforma. Anteriorment completat el Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX) al mateix centre.',
+    'exp.desc3': 'Cicle Formatiu de Grau Superior en Desenvolupament d\'Aplicacions Multiplataforma. Anteriorment va completar el Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX) al mateix centre.',
     'exp.ongoing': 'En curs',
     'exp.completed': 'Completat',
     'exp.date4': '2023<br>2025',
@@ -1943,7 +1951,7 @@ const translations = {
     'sections.exp_work': 'Experiència Laboral',
     'sections.exp_edu': 'Formació Acadèmica',
     'contact.heading': 'Treballem<br><span>junts?</span>',
-    'contact.sub': 'Estic obert a noves oportunitats, col·laboracions i projectes interessants. No dubtis en contactar-me.',
+    'contact.sub': 'Estic obert a noves oportunitats, col·laboracions i projectes interessants. No dubtis a contactar-me.',
     'contact.phone': 'Telèfon',
     'footer.text': 'Dissenyat i desenvolupat per <span>Pau Balsach</span> — 2026',
   },
@@ -1961,7 +1969,7 @@ const translations = {
     'sections.projects': 'Proyectos',
     'sections.about': 'Sobre mí',
     'sections.experience': 'Experiencia',
-    'projects.demo_note': 'Todas las APIs y webs públicas de este portfolio están monitorizadas en tiempo real por <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma de observabilidad SaaS que he desarrollado yo mismo.<br>Detecta caídas automáticamente, registra métricas de latencia, comprueba certificados SSL y envía alertas por email.',    'apptaxis.desc': 'Sistema completo para la gestión de flotas de taxi que centraliza la administración de conductores, servicios y planificación operativa diaria. Permite visualizar y organizar la logística mediante un calendario interactivo, facilitando la asignación de servicios y el control de actividad.',
+    'projects.demo_note': 'Todas las APIs y webs públicas de este portfolio están monitorizadas en tiempo real por <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, una plataforma de observabilidad SaaS que he desarrollado yo mismo.<br>Detecta caídas automáticamente, registra métricas de latencia, comprueba certificados SSL y envía alertas por email.',
     'apptaxis.f1': 'Calendario interactivo',
     'apptaxis.f2': 'Gestión de conductores',
     'apptaxis.f3': 'API documentada',
@@ -1975,6 +1983,10 @@ const translations = {
     'gestor.desc': 'Aplicación de escritorio enfocada en la gestión segura de credenciales, implementando cifrado avanzado y control de acceso basado en autenticación fuerte. La contraseña maestra nunca se almacena: se deriva con PBKDF2 y se usa localmente.',
     'gestor.f1': 'Recuperación por email',
     'gestor.f2': 'Organización por categorías',
+    'gestor.f3': 'Cifrado AES-256',
+    'gestor.f4': 'Derivación de clave PBKDF2',
+    'gestor.f5': 'Seguridad a nivel de fila',
+    'gestor.f6': 'API Riot Games',
     'track.short': 'Herramienta de análisis de hábitos de lectura con sincronización cloud y soporte offline.',
     'track.desc': 'Aplicación de escritorio para el seguimiento y análisis de hábitos de lectura. Permite registrar sesiones, medir rendimiento y visualizar estadísticas detalladas por libro, con sincronización automática en la nube y modo offline completo.',
     'track.f1': 'Estadísticas por libro',
@@ -2011,6 +2023,10 @@ const translations = {
     'about.native': 'Nativo',
     'about.b2': 'B2 — Intermedio-alto',
     'about.tools': 'Herramientas y plataformas',
+    'skills.others': 'Otros',
+    'skills.observability': 'Observabilidad',
+    'skills.robotics': 'Robótica',
+    'skills.databases': 'Bases de datos',
     'exp.date1': 'Jul 2025<br>Nov 2025',
     'exp.date2': 'Nov 2024<br>May 2025',
     'exp.date3': 'Actualidad',
@@ -2029,7 +2045,7 @@ const translations = {
     'exp.tag2c': 'Instalación de software',
     'exp.role3': 'DAM — Grado Superior',
     'exp.company3': 'Institut Pla de l\'Estany, Banyoles',
-    'exp.desc3': 'Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Anteriormente completado el Grado Medio en Sistemas Microinformáticos y Redes (SMX) en el mismo centro.',
+    'exp.desc3': 'Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Anteriormente completó el Grado Medio en Sistemas Microinformáticos y Redes (SMX) en el mismo centro.',
     'exp.ongoing': 'En curso',
     'exp.completed': 'Completado',
     'exp.date4': '2023<br>2025',
@@ -2057,7 +2073,7 @@ const translations = {
     'sections.projects': 'Projects',
     'sections.about': 'About me',
     'sections.experience': 'Experience',
-    'projects.demo_note': 'All public APIs and websites in this portfolio are monitored in real time by <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, an observability SaaS platform I built myself.<br>It automatically detects outages, tracks latency metrics, checks SSL certificates and sends email alerts.',    'apptaxis.desc': 'Complete system for taxi fleet management that centralises driver administration, services and daily operational planning. It allows visualising and organising logistics through an interactive calendar, facilitating service assignment and activity tracking.',
+    'projects.demo_note': 'All public APIs and websites in this portfolio are monitored in real time by <a href="https://pulse-frontend-chi-three.vercel.app/status/bc229056-6426-432c-b9d8-fce362086442" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(127,255,110,0.3);">Pulse</a>, an observability SaaS platform I built myself.<br>It automatically detects outages, tracks latency metrics, checks SSL certificates and sends email alerts.',
     'apptaxis.f1': 'Interactive calendar',
     'apptaxis.f2': 'Driver management',
     'apptaxis.f3': 'Documented API',
@@ -2071,6 +2087,10 @@ const translations = {
     'gestor.desc': 'Desktop application focused on secure credential management, implementing advanced encryption and access control based on strong authentication. The master password is never stored: it is derived with PBKDF2 and used locally.',
     'gestor.f1': 'Email recovery',
     'gestor.f2': 'Category organisation',
+    'gestor.f3': 'AES-256 Encryption',
+    'gestor.f4': 'PBKDF2 Key Derivation',
+    'gestor.f5': 'Row Level Security',
+    'gestor.f6': 'Riot Games API',
     'track.short': 'Reading habit analysis tool with cloud sync and offline support.',
     'track.desc': 'Desktop application for tracking and analysing reading habits. It allows logging sessions, measuring performance and visualising detailed statistics per book, with automatic cloud synchronisation and full offline mode.',
     'track.f1': 'Per-book statistics',
@@ -2096,7 +2116,7 @@ const translations = {
     'rentapi.f5': 'Rate limiting + API Key auth',
     'rentapi.f6': 'CI/CD GitHub Actions',
     'rentapi.arch': '3-repo ecosystem — Scraper (Java) · REST API (Spring Boot) · Frontend (React/Leaflet)',
-    'about.p1': 'I\'m <strong>Pau Balsach</strong>, a student of the Higher Degree in Multiplatform Application Development (DAM) at Institut Pla de l\'Estany, Banyoles.',
+    'about.p1': 'I\'m <strong>Pau Balsach</strong>, a student on the Higher Degree in Multiplatform Application Development (DAM) at Institut Pla de l\'Estany, Banyoles.',
     'about.p2': 'I\'m passionate about building complete systems, from <strong>backend and APIs</strong> to desktop interfaces and mobile applications. I especially enjoy distributed architecture challenges and implementing robust security mechanisms.',
     'about.p3': 'Outside of code, I\'ve volunteered to repair computers for under-resourced schools in Africa, and I\'ve spent 4 years in extracurricular <strong>programming and robotics</strong> activities with Python.',
     'about.skills': 'Technical skills',
@@ -2107,6 +2127,10 @@ const translations = {
     'about.native': 'Native',
     'about.b2': 'B2 — Upper-intermediate',
     'about.tools': 'Tools & platforms',
+    'skills.others': 'Others',
+    'skills.observability': 'Observability',
+    'skills.robotics': 'Robotics',
+    'skills.databases': 'Databases',
     'exp.date1': 'Jul 2025<br>Nov 2025',
     'exp.date2': 'Nov 2024<br>May 2025',
     'exp.date3': 'Present',
@@ -2147,28 +2171,23 @@ function setLang(lang) {
   currentLang = lang;
   const t = translations[lang];
 
-  // Update active button
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
   });
 
-  // Update html lang attribute
   document.documentElement.lang = lang;
 
-  // Update all text nodes (innerHTML to support <strong>, <br>, etc.)
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
 
-  // Update all innerHTML nodes (for elements with HTML like <br> or <strong>)
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
 
-  // Save preference
-  localStorage.setItem('lang', lang);
+  sessionStorage.setItem('lang', lang);
 }
 
 const savedLang = localStorage.getItem('lang') || 'ca';
