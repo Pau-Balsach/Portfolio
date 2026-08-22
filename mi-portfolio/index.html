@@ -1190,7 +1190,7 @@
       <div class="stat-label" data-i18n="stats.repos">Repos públics</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">18</div>
+      <div class="stat-number" id="ageStat">19</div>
       <div class="stat-label" data-i18n="stats.age">Anys</div>
     </div>
   </div>
@@ -2192,6 +2192,21 @@ function setLang(lang) {
 
 const savedLang = localStorage.getItem('lang') || 'ca';
 setLang(savedLang);
+
+function updateAge() {
+  const birthDate = new Date(2007, 6, 6); // 6 de julio de 2007 (mes 0-indexado)
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const hasHadBirthdayThisYear =
+    today.getMonth() > birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+  if (!hasHadBirthdayThisYear) age--;
+
+  const ageEl = document.getElementById('ageStat');
+  if (ageEl) ageEl.textContent = age;
+}
+
+updateAge();
 </script>
 </body>
 </html>
